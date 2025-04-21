@@ -66,9 +66,10 @@ namespace BogsyVideoStore
                         OutCount = 0
                     };
                     context.Add(video);
-                    context.SaveChanges();
-                    MessageBox.Show("Video saved!");
+                    
                 }
+                context.SaveChanges();
+                MessageBox.Show("Video saved!");
 
             }
             this.Close();

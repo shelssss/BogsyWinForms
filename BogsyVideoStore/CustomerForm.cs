@@ -25,9 +25,16 @@ namespace BogsyVideoStore
             currentCustomer = customer;
 
         }
-
+        private void CloseAllChildForms()
+        {
+            foreach (Form child in this.MdiChildren)
+            {
+                child.Close();
+            }
+        }
         private void videoBtn_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             if (RentVidForm == null)
             {
                 RentVidForm = new RentVideoForm(currentCustomer.Name);
@@ -50,6 +57,7 @@ namespace BogsyVideoStore
 
         private void RentVidBtn_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             if (RentedListForm == null)
             {
                 RentedListForm = new RentedVidForm(currentCustomer.Name);
