@@ -75,7 +75,7 @@
             Controls.Add(userNameTxt);
             Controls.Add(label1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Login";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();

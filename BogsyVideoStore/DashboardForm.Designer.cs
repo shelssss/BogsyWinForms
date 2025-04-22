@@ -239,6 +239,7 @@
             Controls.Add(panel1);
             IsMdiContainer = true;
             Name = "DashboardForm";
+            Text = "Admin";
             Load += DashboardForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

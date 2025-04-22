@@ -30,19 +30,23 @@ namespace BogsyVideoStore
 
                 foreach (var rental in rentedVideos)
                 {
-                    int daysRented = DateOnly.FromDateTime(DateTime.Today).DayNumber - rental.RentedDate.DayNumber;
-
-                    if (daysRented > 3)
+                    
+                    if (rental.ReturnedDate == null)
                     {
-                        rental.LateReturnFee = (daysRented - 3) * 5;
-                        rental.status = "Overdue";
-                    }
-                    else
-                    {
-                        rental.LateReturnFee = 0;
-                    }
+                        int daysRented = DateOnly.FromDateTime(DateTime.Today).DayNumber - rental.RentedDate.DayNumber;
 
-                    context.CustomerRented.Update(rental); 
+                        if (daysRented > 3)
+                        {
+                            rental.LateReturnFee = (daysRented - 3) * 5;
+                            rental.status = "Overdue";
+                        }
+                        else
+                        {
+                            rental.LateReturnFee = 0;
+                        }
+
+                        context.CustomerRented.Update(rental);
+                    }
                 }
 
                 context.SaveChanges(); 

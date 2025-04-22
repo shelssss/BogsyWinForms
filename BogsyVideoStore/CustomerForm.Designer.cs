@@ -183,7 +183,7 @@
             Controls.Add(flowLayoutPanel1);
             IsMdiContainer = true;
             Name = "CustomerForm";
-            Text = "CustomerForm";
+            Text = "Customer";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)hamPic).EndInit();

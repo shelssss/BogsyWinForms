@@ -48,9 +48,10 @@ namespace BogsyVideoStore
                         customer.Birthday = DateOnly.FromDateTime(BdayPicker.Value);
                     }
                 }
+
                 else
                 {
-                  
+                    
                     var customer = new Customer
                     {
                         Id = Guid.NewGuid(),
