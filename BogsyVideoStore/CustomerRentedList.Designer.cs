@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             RentedListGrid = new DataGridView();
+            selectFilter = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)RentedListGrid).BeginInit();
             SuspendLayout();
             // 
@@ -36,16 +37,28 @@
             // 
             RentedListGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             RentedListGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            RentedListGrid.Location = new Point(131, 29);
+            RentedListGrid.Location = new Point(125, 49);
             RentedListGrid.Name = "RentedListGrid";
             RentedListGrid.Size = new Size(652, 436);
             RentedListGrid.TabIndex = 0;
+            // 
+            // selectFilter
+            // 
+            selectFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            selectFilter.FormattingEnabled = true;
+            selectFilter.Items.AddRange(new object[] { "All", "Rented", "Overdue", "Returned" });
+            selectFilter.Location = new Point(125, 12);
+            selectFilter.Name = "selectFilter";
+            selectFilter.Size = new Size(136, 23);
+            selectFilter.TabIndex = 1;
+            selectFilter.SelectedIndexChanged += selectFilter_SelectedIndexChanged;
             // 
             // CustomerRentedList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(808, 487);
+            ClientSize = new Size(808, 511);
+            Controls.Add(selectFilter);
             Controls.Add(RentedListGrid);
             FormBorderStyle = FormBorderStyle.None;
             Name = "CustomerRentedList";
@@ -57,5 +70,6 @@
         #endregion
 
         private DataGridView RentedListGrid;
+        private ComboBox selectFilter;
     }
 }

@@ -19,7 +19,7 @@ namespace BogsyVideoStore
             LoadAllRents();
         }
 
-       private void LoadAllRents()
+        private void LoadAllRents()
         {
             using (var context = new AppDbContext())
             {
@@ -27,7 +27,7 @@ namespace BogsyVideoStore
 
                 foreach (var rental in AllRents)
                 {
-                    // Only update rentals that are not returned yet
+
                     if (rental.ReturnedDate == null)
                     {
                         int daysRented = DateOnly.FromDateTime(DateTime.Today).DayNumber - rental.RentedDate.DayNumber;
@@ -46,9 +46,46 @@ namespace BogsyVideoStore
                     }
                 }
 
-                context.SaveChanges(); 
+                context.SaveChanges();
                 RentedListGrid.DataSource = AllRents;
             }
+        }
+
+        private void selectFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (selectFilter.SelectedIndex == 0)
+            {
+                LoadAllRents();
+            }
+            else if (selectFilter.SelectedIndex == 1) 
+            {
+                using (var context = new AppDbContext())
+                {
+                    var RentedVid = context.CustomerRented.Where(r => r.status == "Rented").ToList();
+                    RentedListGrid.DataSource = RentedVid;
+
+                }
+            }
+            else if (selectFilter.SelectedIndex == 2)
+            {
+                using (var context = new AppDbContext())
+                {
+                    var OverdueVid = context.CustomerRented.Where(r => r.status == "Overdue").ToList();
+                    RentedListGrid.DataSource = OverdueVid;
+
+                }
+            }
+            else if(selectFilter.SelectedIndex == 3)
+            {
+                using (var context = new AppDbContext())
+                {
+                    var ReturnedVid = context.CustomerRented.Where(r => r.status == "Returned").ToList();
+                    RentedListGrid.DataSource = ReturnedVid;
+
+                }
+            }
+
+
         }
     }
 }
