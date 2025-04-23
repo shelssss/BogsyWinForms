@@ -35,6 +35,16 @@ namespace BogsyVideoStore
 
         private void AddCustomerBtn_Click(object sender, EventArgs e)
         {
+
+            string name = customerNameTxt.Text;
+            string username = userNameTxt.Text;
+
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("Name and Username cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             using (var context = new AppDbContext())
             {
                 if (_customerToEdit != null)
@@ -73,5 +83,7 @@ namespace BogsyVideoStore
         {
 
         }
+
+
     }
 }

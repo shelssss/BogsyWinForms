@@ -34,11 +34,16 @@ namespace BogsyVideoStore
 
         private void AddVideo_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void AddVidBtn_Click(object sender, EventArgs e)
         {
+            if (!IsVideoInputValid())
+            {
+                MessageBox.Show("Please fill in all fields properly.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             using (var context = new AppDbContext())
             {
 
@@ -78,6 +83,14 @@ namespace BogsyVideoStore
         private void TitleTxt_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private bool IsVideoInputValid()
+        {
+            return !string.IsNullOrWhiteSpace(TitleTxt.Text)
+                && !string.IsNullOrWhiteSpace(DescTxt.Text)
+                && !string.IsNullOrWhiteSpace(CategoryDropDown.Text)
+                && CurrentInTxt.Value > 0;
         }
     }
 }
