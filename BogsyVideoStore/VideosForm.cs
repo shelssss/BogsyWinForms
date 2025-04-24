@@ -77,10 +77,19 @@ namespace BogsyVideoStore
                         var videoToDelete = context.Video.FirstOrDefault(c => c.Id == video.Id);
                         if (videoToDelete != null)
                         {
+                            if (videoToDelete.OutCount > 0)
+                            {
+                                MessageBox.Show("Cannot delete this video because it is currently rented out.",
+                                                "Delete Blocked",
+                                                MessageBoxButtons.OK,
+                                                MessageBoxIcon.Warning);
+                                return;
+                            }
+
                             context.Video.Remove(videoToDelete);
                             context.SaveChanges();
                             MessageBox.Show("Video deleted!");
-                            LoadVideo(); 
+                            LoadVideo();
                         }
                     }
                 }
