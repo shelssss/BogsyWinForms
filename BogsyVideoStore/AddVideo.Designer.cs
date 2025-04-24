@@ -150,6 +150,7 @@
             Controls.Add(CurrentInTxt);
             Controls.Add(TitleTxt);
             Name = "AddVideo";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AddVideo";
             Load += AddVideo_Load;
             ((System.ComponentModel.ISupportInitialize)CurrentInTxt).EndInit();

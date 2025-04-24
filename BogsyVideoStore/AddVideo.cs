@@ -92,5 +92,7 @@ namespace BogsyVideoStore
                 && !string.IsNullOrWhiteSpace(CategoryDropDown.Text)
                 && CurrentInTxt.Value > 0;
         }
+
+
     }
 }

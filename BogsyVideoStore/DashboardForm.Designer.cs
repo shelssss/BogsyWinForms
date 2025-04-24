@@ -240,6 +240,7 @@
             IsMdiContainer = true;
             Name = "DashboardForm";
             Text = "Admin";
+            WindowState = FormWindowState.Maximized;
             Load += DashboardForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -74,6 +74,8 @@
             Controls.Add(loginBtn);
             Controls.Add(userNameTxt);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "Login";
             Load += Form1_Load;

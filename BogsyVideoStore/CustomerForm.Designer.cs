@@ -184,6 +184,7 @@
             IsMdiContainer = true;
             Name = "CustomerForm";
             Text = "Customer";
+            WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)hamPic).EndInit();

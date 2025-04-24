@@ -124,6 +124,7 @@
             Controls.Add(userNameTxt);
             Controls.Add(customerNameTxt);
             Name = "AddCustomer";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AddCustomer";
             Load += AddCustomer_Load;
             ResumeLayout(false);
