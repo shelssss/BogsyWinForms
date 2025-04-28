@@ -39,15 +39,16 @@
             // 
             VideoGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             VideoGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            VideoGridView.Location = new Point(117, 53);
+            VideoGridView.Location = new Point(125, 53);
             VideoGridView.Name = "VideoGridView";
             VideoGridView.ReadOnly = true;
-            VideoGridView.Size = new Size(671, 385);
+            VideoGridView.Size = new Size(663, 385);
             VideoGridView.TabIndex = 0;
             // 
             // AddViewBtn
             // 
             AddViewBtn.BackColor = Color.FromArgb(0, 46, 68);
+            AddViewBtn.FlatStyle = FlatStyle.Popup;
             AddViewBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddViewBtn.ForeColor = Color.White;
             AddViewBtn.Location = new Point(551, 24);
@@ -61,6 +62,7 @@
             // Edit
             // 
             Edit.BackColor = Color.FromArgb(0, 46, 68);
+            Edit.FlatStyle = FlatStyle.Popup;
             Edit.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             Edit.ForeColor = Color.White;
             Edit.Location = new Point(632, 24);
@@ -74,6 +76,7 @@
             // delBtn
             // 
             delBtn.BackColor = Color.FromArgb(0, 46, 68);
+            delBtn.FlatStyle = FlatStyle.Popup;
             delBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             delBtn.ForeColor = Color.White;
             delBtn.Location = new Point(713, 24);

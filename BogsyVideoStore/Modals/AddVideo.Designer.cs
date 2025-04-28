@@ -81,6 +81,7 @@
             // AddVidBtn
             // 
             AddVidBtn.BackColor = Color.FromArgb(0, 46, 68);
+            AddVidBtn.FlatStyle = FlatStyle.Popup;
             AddVidBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddVidBtn.ForeColor = Color.White;
             AddVidBtn.Location = new Point(116, 271);

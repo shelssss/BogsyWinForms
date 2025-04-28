@@ -86,6 +86,7 @@
             // AddCustomerBtn
             // 
             AddCustomerBtn.BackColor = Color.FromArgb(0, 46, 68);
+            AddCustomerBtn.FlatStyle = FlatStyle.Popup;
             AddCustomerBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddCustomerBtn.ForeColor = SystemColors.ButtonHighlight;
             AddCustomerBtn.Location = new Point(623, 12);
@@ -99,6 +100,7 @@
             // EditBtn
             // 
             EditBtn.BackColor = Color.FromArgb(0, 46, 68);
+            EditBtn.FlatStyle = FlatStyle.Popup;
             EditBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             EditBtn.ForeColor = Color.White;
             EditBtn.Location = new Point(713, 12);

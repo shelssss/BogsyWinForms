@@ -1,4 +1,5 @@
-﻿using BogsyVideoStore.Models;
+﻿using BogsyVideoStore.Helpers;
+using BogsyVideoStore.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,31 +24,15 @@ namespace BogsyVideoStore
         {
             using (var context = new AppDbContext())
             {
-                var AllRents = context.CustomerRented.ToList();
+                var allRents = context.CustomerRented.ToList();
 
-                foreach (var rental in AllRents)
-                {
+               
+                Overdue.UpdateOverdue(allRents);
 
-                    if (rental.ReturnedDate == null)
-                    {
-                        int daysRented = DateOnly.FromDateTime(DateTime.Today).DayNumber - rental.RentedDate.DayNumber;
-
-                        if (daysRented > 3)
-                        {
-                            rental.LateReturnFee = (daysRented - 3) * 5;
-                            rental.status = "Overdue";
-                        }
-                        else
-                        {
-                            rental.LateReturnFee = 0;
-                        }
-
-                        context.CustomerRented.Update(rental);
-                    }
-                }
-
+                context.CustomerRented.UpdateRange(allRents);
                 context.SaveChanges();
-                RentedListGrid.DataSource = AllRents;
+
+                RentedListGrid.DataSource = allRents;
             }
         }
 

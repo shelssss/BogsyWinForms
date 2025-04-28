@@ -101,6 +101,7 @@
             // AddCustomerBtn
             // 
             AddCustomerBtn.BackColor = Color.FromArgb(0, 46, 68);
+            AddCustomerBtn.FlatStyle = FlatStyle.Popup;
             AddCustomerBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddCustomerBtn.ForeColor = Color.White;
             AddCustomerBtn.Location = new Point(113, 238);
