@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             label1 = new Label();
             userNameTxt = new TextBox();
             loginBtn = new Button();
+            passwordTxt = new TextBox();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -57,7 +61,7 @@
             // 
             loginBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             loginBtn.ForeColor = Color.FromArgb(0, 46, 68);
-            loginBtn.Location = new Point(283, 276);
+            loginBtn.Location = new Point(283, 292);
             loginBtn.Name = "loginBtn";
             loginBtn.Size = new Size(75, 23);
             loginBtn.TabIndex = 3;
@@ -65,20 +69,43 @@
             loginBtn.UseVisualStyleBackColor = true;
             loginBtn.Click += loginBtn_Click;
             // 
+            // passwordTxt
+            // 
+            passwordTxt.Location = new Point(175, 254);
+            passwordTxt.Name = "passwordTxt";
+            passwordTxt.PlaceholderText = "Password";
+            passwordTxt.Size = new Size(296, 23);
+            passwordTxt.TabIndex = 4;
+            passwordTxt.UseSystemPasswordChar = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(215, 49);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(202, 149);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 46, 68);
             ClientSize = new Size(652, 382);
+            Controls.Add(passwordTxt);
             Controls.Add(loginBtn);
             Controls.Add(userNameTxt);
             Controls.Add(label1);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "Form1";
             Text = "Login";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -88,5 +115,7 @@
         private Label label1;
         private TextBox userNameTxt;
         private Button loginBtn;
+        private TextBox passwordTxt;
+        private PictureBox pictureBox1;
     }
 }
