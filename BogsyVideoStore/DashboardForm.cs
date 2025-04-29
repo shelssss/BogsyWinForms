@@ -25,7 +25,11 @@ namespace BogsyVideoStore
 
         private void DashboardForm_Load(object sender, EventArgs e)
         {
-
+            dashForm = new dashForm();
+            dashForm.FormClosed += dashboardForm_FormClose;
+            dashForm.MdiParent = this;
+            dashForm.Dock = DockStyle.Fill;
+            dashForm.Show();
         }
         private void CloseAllChildForms()
         {
