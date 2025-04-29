@@ -42,11 +42,26 @@ namespace BogsyVideoStore
                     Panel card = new Panel
                     {
                         Width = 200,
-                        Height = 250,
+                        Height = 300,
                         BorderStyle = BorderStyle.FixedSingle,
                         Margin = new Padding(10)
                     };
 
+                    PictureBox pictureBox = new PictureBox
+                    {
+                        Width = 180,
+                        Height = 120, 
+                        Top = 10,
+                        Left = 10,
+                        SizeMode = PictureBoxSizeMode.StretchImage 
+                    };
+
+                    if (!string.IsNullOrEmpty(video.ImagePath) && File.Exists(video.ImagePath))
+                    {
+                        pictureBox.Image = Image.FromFile(video.ImagePath); // Load the image
+                    }
+
+                   
                     Label title = new Label
                     {
                         Text = video.Title,
@@ -54,30 +69,33 @@ namespace BogsyVideoStore
                         AutoSize = false,
                         Width = 180,
                         Height = 30,
-                        Top = 10,
+                        Top = 140, 
                         Left = 10
                     };
 
+                   
                     Label category = new Label
                     {
-                        Text = "Category: " + video.Category,
+                        Text = $"Category: {video.Category}",
                         AutoSize = false,
                         Width = 180,
                         Height = 20,
-                        Top = 50,
+                        Top = 170, 
                         Left = 10
                     };
 
+                    
                     Label stock = new Label
                     {
                         Text = $"Available: {video.InCount}",
                         AutoSize = false,
                         Width = 180,
                         Height = 20,
-                        Top = 75,
+                        Top = 190, 
                         Left = 10
                     };
 
+                  
                     int cost = video.Category == "DVD" ? 50 : 25;
                     Label costLabel = new Label
                     {
@@ -85,27 +103,29 @@ namespace BogsyVideoStore
                         AutoSize = false,
                         Width = 180,
                         Height = 20,
-                        Top = 100,
+                        Top = 210, 
                         Left = 10
                     };
 
+                  
                     Button rentBtn = new Button
                     {
                         Text = "Rent",
                         Width = 100,
                         Height = 30,
-                        Top = 180,
+                        Top = 240, 
                         Left = 50,
+                        FlatStyle = FlatStyle.Popup,
                         BackColor = Color.FromArgb(0, 46, 68),
-                        ForeColor = Color.White
+                        ForeColor = Color.White 
                     };
 
-                    // Attach rent logic
+                   
                     rentBtn.Click += (s, e) =>
                     {
                         RentVideo(video, currentCustomerName);
                     };
-
+                    card.Controls.Add(pictureBox);
                     card.Controls.Add(title);
                     card.Controls.Add(category);
                     card.Controls.Add(stock);
