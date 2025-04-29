@@ -35,6 +35,8 @@
             label2 = new Label();
             label3 = new Label();
             AddCustomerBtn = new Button();
+            passLbl = new Label();
+            passwordTxt = new TextBox();
             SuspendLayout();
             // 
             // customerNameTxt
@@ -59,7 +61,7 @@
             // 
             // BdayPicker
             // 
-            BdayPicker.Location = new Point(50, 185);
+            BdayPicker.Location = new Point(50, 254);
             BdayPicker.Name = "BdayPicker";
             BdayPicker.Size = new Size(213, 23);
             BdayPicker.TabIndex = 3;
@@ -83,16 +85,17 @@
             label2.ForeColor = Color.FromArgb(0, 46, 68);
             label2.Location = new Point(50, 108);
             label2.Name = "label2";
-            label2.Size = new Size(126, 15);
+            label2.Size = new Size(124, 15);
             label2.TabIndex = 5;
-            label2.Text = "Customer UserName:";
+            label2.Text = "Customer Username:";
+            label2.Click += label2_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(0, 46, 68);
-            label3.Location = new Point(50, 167);
+            label3.Location = new Point(50, 236);
             label3.Name = "label3";
             label3.Size = new Size(85, 15);
             label3.TabIndex = 6;
@@ -104,7 +107,7 @@
             AddCustomerBtn.FlatStyle = FlatStyle.Popup;
             AddCustomerBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddCustomerBtn.ForeColor = Color.White;
-            AddCustomerBtn.Location = new Point(113, 238);
+            AddCustomerBtn.Location = new Point(113, 307);
             AddCustomerBtn.Name = "AddCustomerBtn";
             AddCustomerBtn.Size = new Size(83, 37);
             AddCustomerBtn.TabIndex = 7;
@@ -112,11 +115,35 @@
             AddCustomerBtn.UseVisualStyleBackColor = false;
             AddCustomerBtn.Click += AddCustomerBtn_Click;
             // 
+            // passLbl
+            // 
+            passLbl.AutoSize = true;
+            passLbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            passLbl.ForeColor = Color.FromArgb(0, 46, 68);
+            passLbl.Location = new Point(50, 171);
+            passLbl.Name = "passLbl";
+            passLbl.Size = new Size(119, 15);
+            passLbl.TabIndex = 9;
+            passLbl.Text = "Customer Password:";
+            // 
+            // passwordTxt
+            // 
+            passwordTxt.Font = new Font("Segoe UI", 12F);
+            passwordTxt.ForeColor = Color.FromArgb(0, 46, 68);
+            passwordTxt.Location = new Point(50, 189);
+            passwordTxt.Name = "passwordTxt";
+            passwordTxt.PlaceholderText = "Password";
+            passwordTxt.Size = new Size(213, 29);
+            passwordTxt.TabIndex = 8;
+            passwordTxt.UseSystemPasswordChar = true;
+            // 
             // AddCustomer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(307, 390);
+            Controls.Add(passLbl);
+            Controls.Add(passwordTxt);
             Controls.Add(AddCustomerBtn);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -140,5 +167,7 @@
         private Label label2;
         private Label label3;
         private Button AddCustomerBtn;
+        private Label passLbl;
+        private TextBox passwordTxt;
     }
 }

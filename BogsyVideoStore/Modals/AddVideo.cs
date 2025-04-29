@@ -15,6 +15,7 @@ namespace BogsyVideoStore
     public partial class AddVideo : Form
     {
         private Video _videoToEdit;
+        private string selectedImagePath = "";
         public AddVideo()
         {
             InitializeComponent();
@@ -29,12 +30,13 @@ namespace BogsyVideoStore
             DescTxt.Text = video.Description;
             CategoryDropDown.Text = video.Category;
             CurrentInTxt.Value = video.InCount;
+            selectedImagePath = video.ImagePath;
 
         }
 
         private void AddVideo_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void AddVidBtn_Click(object sender, EventArgs e)
@@ -57,6 +59,7 @@ namespace BogsyVideoStore
                         video.Description = DescTxt.Text;
                         video.Category = CategoryDropDown.Text;
                         video.InCount = (int)CurrentInTxt.Value;
+                        video.ImagePath = selectedImagePath;    
                     }
                 }
                 else
@@ -68,10 +71,11 @@ namespace BogsyVideoStore
                         Description = DescTxt.Text,
                         Category = CategoryDropDown.Text,
                         InCount = (int)CurrentInTxt.Value,
-                        OutCount = 0
+                        OutCount = 0,
+                        ImagePath = selectedImagePath
                     };
                     context.Add(video);
-                    
+
                 }
                 context.SaveChanges();
                 MessageBox.Show("Video saved!");
@@ -93,6 +97,15 @@ namespace BogsyVideoStore
                 && CurrentInTxt.Value > 0;
         }
 
+        private void uploadImgBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif";
 
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                selectedImagePath = ofd.FileName;
+            }
+        }
     }
 }

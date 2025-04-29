@@ -37,6 +37,7 @@
             descLbl = new Label();
             catLbl = new Label();
             qtyLbl = new Label();
+            uploadImgBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)CurrentInTxt).BeginInit();
             SuspendLayout();
             // 
@@ -84,7 +85,7 @@
             AddVidBtn.FlatStyle = FlatStyle.Popup;
             AddVidBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddVidBtn.ForeColor = Color.White;
-            AddVidBtn.Location = new Point(116, 271);
+            AddVidBtn.Location = new Point(111, 316);
             AddVidBtn.Name = "AddVidBtn";
             AddVidBtn.Size = new Size(83, 39);
             AddVidBtn.TabIndex = 4;
@@ -136,11 +137,23 @@
             qtyLbl.TabIndex = 8;
             qtyLbl.Text = "Quantity:";
             // 
+            // uploadImgBtn
+            // 
+            uploadImgBtn.FlatStyle = FlatStyle.Popup;
+            uploadImgBtn.Location = new Point(62, 265);
+            uploadImgBtn.Name = "uploadImgBtn";
+            uploadImgBtn.Size = new Size(192, 29);
+            uploadImgBtn.TabIndex = 9;
+            uploadImgBtn.Text = "Select Image";
+            uploadImgBtn.UseVisualStyleBackColor = true;
+            uploadImgBtn.Click += uploadImgBtn_Click;
+            // 
             // AddVideo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(318, 390);
+            Controls.Add(uploadImgBtn);
             Controls.Add(qtyLbl);
             Controls.Add(catLbl);
             Controls.Add(descLbl);
@@ -170,5 +183,6 @@
         private Label descLbl;
         private Label catLbl;
         private Label qtyLbl;
+        private Button uploadImgBtn;
     }
 }
