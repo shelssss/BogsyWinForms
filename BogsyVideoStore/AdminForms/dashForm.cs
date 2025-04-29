@@ -24,7 +24,7 @@ namespace BogsyVideoStore
             using (var context = new AppDbContext())
             {
                 var userCount = context.Customer.Count();
-                userNumLbl.Text = userCount.ToString(); 
+                userNumLbl.Text = userCount.ToString();
 
                 var vcdCount = context.Video.Where(vcd => vcd.Category == "VCD").Count();
                 vcdNumLbl.Text = vcdCount.ToString();
@@ -38,16 +38,6 @@ namespace BogsyVideoStore
                 var totalSales = context.CustomerRented.Sum(r => r.RentCost + r.LateReturnFee);
                 totalSalesLbl.Text = totalSales.ToString("C");
             }
-        }
-
-        private void userCountLbl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
