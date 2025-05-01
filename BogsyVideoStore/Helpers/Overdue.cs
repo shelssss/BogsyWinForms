@@ -9,30 +9,38 @@ namespace BogsyVideoStore.Helpers
 {
     public static class Overdue
     {
+
         public static void UpdateOverdue(List<CustomerRented> rentals)
         {
-            foreach (var rental in rentals)
+            using (var context = new AppDbContext())
             {
-                if (rental.ReturnedDate == null)
-                {
-                    int daysRented = DateOnly.FromDateTime(DateTime.Today).DayNumber - rental.RentedDate.DayNumber;
+                // Load all videos into a dictionary for quick lookup by ID
+                var videos = context.Video.ToDictionary(v => v.Id);
 
-                    if (daysRented > 3)
+                foreach (var rental in rentals)
+                {
+                    if (rental.ReturnedDate == null && Guid.TryParse(rental.VideoId, out Guid videoId))
                     {
-                        rental.LateReturnFee = (daysRented - 3) * 5;
-                        rental.status = "Overdue";
-                    }
-                    else
-                    {
-                        rental.LateReturnFee = 0;
+                        if (videos.TryGetValue(videoId, out var video))
+                        {
+                            int daysRented = DateOnly.FromDateTime(DateTime.Today).DayNumber - rental.RentedDate.DayNumber;
+
+                            if (daysRented > video.MaxRentDays)
+                            {
+                                rental.LateReturnFee = (daysRented - video.MaxRentDays) * 5;
+                                rental.status = "Overdue";
+                            }
+                            else
+                            {
+                                rental.LateReturnFee = 0;
+                                rental.status = "Rented";
+                            }
+                        }
                     }
                 }
             }
         }
 
-        public static void OverdueForCustomer(List<CustomerRented> rentals)
-        {
-
-        }
+     
     }
 }
