@@ -61,10 +61,5 @@ namespace BogsyVideoStore
                 MessageBox.Show("Please select a customer to edit.");
             }
         }
-
-        private void CustomerGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

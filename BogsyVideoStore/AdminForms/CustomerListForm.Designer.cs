@@ -81,7 +81,6 @@
             CustomerGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             CustomerGridView.Size = new Size(674, 397);
             CustomerGridView.TabIndex = 0;
-            CustomerGridView.CellContentClick += CustomerGridView_CellContentClick;
             // 
             // AddCustomerBtn
             // 
