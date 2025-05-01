@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using BogsyVideoStore.Helpers;
 using BogsyVideoStore.Models;
 
 
@@ -18,23 +19,24 @@ namespace BogsyVideoStore
         private RentVideoForm RentVidForm;
         private Customer currentCustomer;
         private RentedVidForm RentedListForm;
+        CloseChildrenMDI CloseChildrenMDI = new CloseChildrenMDI();
       
         public CustomerForm(Customer customer)
         {
             InitializeComponent();
             currentCustomer = customer;
 
+            RentVidForm = new RentVideoForm(currentCustomer.Name);
+            RentVidForm.FormClosed += RentVidForm_FormClose;
+            RentVidForm.MdiParent = this;
+            RentVidForm.Dock = DockStyle.Fill;
+            RentVidForm.Show();
+
         }
-        private void CloseAllChildForms()
-        {
-            foreach (Form child in this.MdiChildren)
-            {
-                child.Close();
-            }
-        }
+        
         private void videoBtn_Click(object sender, EventArgs e)
         {
-            CloseAllChildForms();
+            CloseChildrenMDI.CloseAllChildForms();
             if (RentVidForm == null)
             {
                 RentVidForm = new RentVideoForm(currentCustomer.Name);
@@ -57,7 +59,7 @@ namespace BogsyVideoStore
 
         private void RentVidBtn_Click(object sender, EventArgs e)
         {
-            CloseAllChildForms();
+            CloseChildrenMDI.CloseAllChildForms();
             if (RentedListForm == null)
             {
                 RentedListForm = new RentedVidForm(currentCustomer.Name);
