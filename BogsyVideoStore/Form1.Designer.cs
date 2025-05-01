@@ -47,7 +47,6 @@
             label1.Size = new Size(316, 37);
             label1.TabIndex = 0;
             label1.Text = "BVS: Bogsy Video Store";
-            label1.Click += label1_Click;
             // 
             // userNameTxt
             // 
@@ -87,7 +86,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // Form1
             // 
@@ -104,7 +102,6 @@
             MaximizeBox = false;
             Name = "Form1";
             Text = "Login";
-            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

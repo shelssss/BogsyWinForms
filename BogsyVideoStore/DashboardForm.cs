@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BogsyVideoStore.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+
 
 namespace BogsyVideoStore
 
@@ -18,6 +21,7 @@ namespace BogsyVideoStore
         private VideosForm vidForm;
         private dashForm dashForm;
         private CustomerRentedList AllRentsForm;
+        CloseChildrenMDI CloseChildrenMDI = new CloseChildrenMDI();
         public DashboardForm()
         {
             InitializeComponent();
@@ -25,23 +29,25 @@ namespace BogsyVideoStore
 
         private void DashboardForm_Load(object sender, EventArgs e)
         {
-            dashForm = new dashForm();
-            dashForm.FormClosed += dashboardForm_FormClose;
-            dashForm.MdiParent = this;
-            dashForm.Dock = DockStyle.Fill;
-            dashForm.Show();
-        }
-        private void CloseAllChildForms()
-        {
-            foreach (Form child in this.MdiChildren)
+            if (dashForm == null)
             {
-                child.Close();
+                dashForm = new dashForm();
+                dashForm.FormClosed += dashboardForm_FormClose;
+                dashForm.MdiParent = this;
+                dashForm.Dock = DockStyle.Fill;
+                dashForm.Show();
+
+            }
+            else
+            {
+                dashForm.Activate();
             }
         }
+       
         private void button1_Click(object sender, EventArgs e)
         {
 
-            CloseAllChildForms();
+            CloseChildrenMDI.CloseAllChildForms();
 
             if (dashForm == null)
             {
@@ -65,7 +71,7 @@ namespace BogsyVideoStore
 
         private void customerBtn_Click(object sender, EventArgs e)
         {
-            CloseAllChildForms();
+            CloseChildrenMDI.CloseAllChildForms();
             if (customerForm == null)
             {
                 customerForm = new CustomerListForm();
@@ -87,7 +93,7 @@ namespace BogsyVideoStore
 
         private void videoBtn_Click(object sender, EventArgs e)
         {
-            CloseAllChildForms();
+            CloseChildrenMDI.CloseAllChildForms();
             if (vidForm == null)
             {
                 vidForm = new VideosForm();
@@ -111,7 +117,7 @@ namespace BogsyVideoStore
 
         private void AllRentsBtn_Click(object sender, EventArgs e)
         {
-            CloseAllChildForms();
+            CloseChildrenMDI.CloseAllChildForms();
             if (AllRentsForm == null)
             {
                 AllRentsForm = new CustomerRentedList();

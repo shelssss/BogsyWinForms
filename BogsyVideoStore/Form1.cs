@@ -11,17 +11,6 @@ namespace BogsyVideoStore
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void loginBtn_Click(object sender, EventArgs e)
         {
             var username = userNameTxt.Text.Trim();
@@ -56,11 +45,6 @@ namespace BogsyVideoStore
                     MessageBox.Show("Invalid username or password.");
                 }
             }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
