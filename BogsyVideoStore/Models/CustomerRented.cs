@@ -10,6 +10,7 @@ namespace BogsyVideoStore.Models
     {
         public Guid Id { get; set; }
         public string CustomerName { get; set; }
+        public string VideoId { get; set; } 
         public string VideoRented { get; set; }
         public DateOnly RentedDate { get; set; }
         public DateOnly? ReturnedDate {  get; set; }

@@ -14,6 +14,7 @@ namespace BogsyVideoStore.Models
         public string Category { get; set; }    
         public int InCount { get; set; }
         public int OutCount { get; set; }
+        public int MaxRentDays { get; set; }
         public string ImagePath { get; set; }
 
     }
