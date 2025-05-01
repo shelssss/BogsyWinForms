@@ -30,6 +30,7 @@ namespace BogsyVideoStore
             DescTxt.Text = video.Description;
             CategoryDropDown.Text = video.Category;
             CurrentInTxt.Value = video.InCount;
+            maxRentCmbx.Text = video.Category;
             selectedImagePath = video.ImagePath;
 
         }
@@ -59,6 +60,7 @@ namespace BogsyVideoStore
                         video.Description = DescTxt.Text;
                         video.Category = CategoryDropDown.Text;
                         video.InCount = (int)CurrentInTxt.Value;
+                        video.MaxRentDays = int.Parse(maxRentCmbx.Text);
                         video.ImagePath = selectedImagePath;    
                     }
                 }
@@ -72,6 +74,7 @@ namespace BogsyVideoStore
                         Category = CategoryDropDown.Text,
                         InCount = (int)CurrentInTxt.Value,
                         OutCount = 0,
+                        MaxRentDays = int.Parse(maxRentCmbx.Text),
                         ImagePath = selectedImagePath
                     };
                     context.Add(video);
