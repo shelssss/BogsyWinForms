@@ -145,7 +145,7 @@ namespace BogsyVideoStore
             
             var result = MessageBox.Show(
                 $"You are about to rent '{video.Title}' ({video.Category}) for ₱{cost}.\n" +
-                "You can only keep the video for 3 days.\n" +
+                $"You can only keep the video for {video.MaxRentDays} day/s.\n" +
                 "After that, ₱5 will be charged for each extra day.\n\n" +
                 "Do you want to continue?",
                 "Confirm Rental",
@@ -173,7 +173,8 @@ namespace BogsyVideoStore
                             VideoRented = v.Title,
                             RentedDate = DateOnly.FromDateTime(DateTime.Today),
                             RentCost = cost,
-                            status = "Rented"
+                            status = "Rented",
+                            VideoId = v.Id.ToString(),
                         };
 
                         context.CustomerRented.Add(rental);
