@@ -30,7 +30,7 @@ namespace BogsyVideoStore
             DescTxt.Text = video.Description;
             CategoryDropDown.Text = video.Category;
             CurrentInTxt.Value = video.InCount;
-            maxRentCmbx.Text = video.Category;
+            maxRentCmbx.Text = video.MaxRentDays.ToString();
             selectedImagePath = video.ImagePath;
 
         }

@@ -62,6 +62,7 @@
             // 
             // CategoryDropDown
             // 
+            CategoryDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             CategoryDropDown.Font = new Font("Segoe UI", 12F);
             CategoryDropDown.ForeColor = SystemColors.WindowFrame;
             CategoryDropDown.FormattingEnabled = true;
@@ -70,7 +71,6 @@
             CategoryDropDown.Name = "CategoryDropDown";
             CategoryDropDown.Size = new Size(192, 29);
             CategoryDropDown.TabIndex = 2;
-            CategoryDropDown.Text = "Category";
             // 
             // DescTxt
             // 
@@ -163,6 +163,7 @@
             // 
             // maxRentCmbx
             // 
+            maxRentCmbx.DropDownStyle = ComboBoxStyle.DropDownList;
             maxRentCmbx.Font = new Font("Segoe UI", 12F);
             maxRentCmbx.ForeColor = SystemColors.WindowFrame;
             maxRentCmbx.FormattingEnabled = true;
@@ -171,7 +172,6 @@
             maxRentCmbx.Name = "maxRentCmbx";
             maxRentCmbx.Size = new Size(192, 29);
             maxRentCmbx.TabIndex = 10;
-            maxRentCmbx.Text = "Days";
             // 
             // AddVideo
             // 
