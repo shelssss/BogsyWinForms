@@ -62,30 +62,30 @@ namespace BogsyVideoStore
         {
             if (VideoGridView.SelectedRows.Count > 0)
             {
-                var confirm = MessageBox.Show("Are you sure you want to delete this Video?",
-                                              "Confirm Delete",
-                                              MessageBoxButtons.YesNo,
-                                              MessageBoxIcon.Warning);
+                var selectedRow = VideoGridView.SelectedRows[0];
+                var video = (Video)selectedRow.DataBoundItem;
 
-                if (confirm == DialogResult.Yes)
+                using (var context = new AppDbContext())
                 {
-                    var selectedRow = VideoGridView.SelectedRows[0];
-                    var video = (Video)selectedRow.DataBoundItem;
-
-                    using (var context = new AppDbContext())
+                    var videoToDelete = context.Video.FirstOrDefault(c => c.Id == video.Id);
+                    if (videoToDelete != null)
                     {
-                        var videoToDelete = context.Video.FirstOrDefault(c => c.Id == video.Id);
-                        if (videoToDelete != null)
+                        if (videoToDelete.OutCount > 0)
                         {
-                            if (videoToDelete.OutCount > 0)
-                            {
-                                MessageBox.Show("Cannot delete this video because it is currently rented out.",
-                                                "Delete Blocked",
-                                                MessageBoxButtons.OK,
-                                                MessageBoxIcon.Warning);
-                                return;
-                            }
+                            MessageBox.Show("Cannot delete this video because it is currently rented out.",
+                                            "Delete Blocked",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Warning);
+                            return;
+                        }
 
+                        var confirm = MessageBox.Show("Are you sure you want to delete this Video?",
+                                                      "Confirm Delete",
+                                                      MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Warning);
+
+                        if (confirm == DialogResult.Yes)
+                        {
                             context.Video.Remove(videoToDelete);
                             context.SaveChanges();
                             MessageBox.Show("Video deleted!");
