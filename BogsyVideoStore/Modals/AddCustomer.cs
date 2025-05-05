@@ -40,13 +40,8 @@ namespace BogsyVideoStore
 
             string name = customerNameTxt.Text.Trim();
             string username = userNameTxt.Text.Trim();
-            string password = passwordTxt.Text.Trim(); // assuming you have passwordTxt
+            string password = passwordTxt.Text.Trim(); 
 
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Name, Username, and Password cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             using (var context = new AppDbContext())
             {
@@ -58,11 +53,25 @@ namespace BogsyVideoStore
                         customer.Name = name;
                         customer.Username = username;
                         customer.Birthday = DateOnly.FromDateTime(BdayPicker.Value);
+                        
                     
                     }
                 }
                 else
                 {
+                    if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                    {
+                        MessageBox.Show("Name, Username, and Password cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    bool usernameExists = context.Customer.Any(c => c.Username == username);
+                    if (usernameExists)
+                    {
+                        MessageBox.Show("Username already exists. Please choose another one.", "Duplicate Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     var customer = new Customer
                     {
                         Id = Guid.NewGuid(),
