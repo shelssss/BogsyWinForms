@@ -39,6 +39,7 @@
             RentedListGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             RentedListGrid.Location = new Point(125, 49);
             RentedListGrid.Name = "RentedListGrid";
+            RentedListGrid.ReadOnly = true;
             RentedListGrid.Size = new Size(652, 436);
             RentedListGrid.TabIndex = 0;
             // 
