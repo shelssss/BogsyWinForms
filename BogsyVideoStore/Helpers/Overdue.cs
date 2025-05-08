@@ -14,14 +14,14 @@ namespace BogsyVideoStore.Helpers
         {
             using (var context = new AppDbContext())
             {
-                // Load all videos into a dictionary for quick lookup by ID
+                
                 var videos = context.Video.ToDictionary(v => v.Id);
 
                 foreach (var rental in rentals)
                 {
                     if (rental.ReturnedDate == null && Guid.TryParse(rental.VideoId, out Guid videoId))
                     {
-                        if (videos.TryGetValue(videoId, out var video))
+                        if (videos.TryGetValue(videoId, out var video))                                             
                         {
                             int daysRented = DateOnly.FromDateTime(DateTime.Today).DayNumber - rental.RentedDate.DayNumber;
 
