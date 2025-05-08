@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BogsyVideoStore.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,21 +24,23 @@ namespace BogsyVideoStore
         {
             using (var context = new AppDbContext())
             {
-                var userCount = context.Customer.Count();
-                userNumLbl.Text = userCount.ToString();
+                var userCount = FilterResults.UserCount(context);
+                userNumLbl.Text = userCount;
 
-                var vcdCount = context.Video.Where(vcd => vcd.Category == "VCD").Count();
-                vcdNumLbl.Text = vcdCount.ToString();
+                var vcdCount = FilterResults.VcdCount(context);
+                vcdNumLbl.Text = vcdCount;
 
-                var dvdCount = context.Video.Where(dvd => dvd.Category == "DVD").Count();
-                dvdNumLbl.Text = dvdCount.ToString();
+                var dvdCount = FilterResults.DvdCount(context);
+                dvdNumLbl.Text = dvdCount;
 
-                var overDues = context.CustomerRented.Where(c => c.status == "Overdue").Count();
-                overNumLbl.Text = overDues.ToString();
+                var overDues = FilterResults.OverdueCount(context);
+                overNumLbl.Text = overDues;
 
-                var totalSales = context.CustomerRented.Sum(r => r.RentCost + r.LateReturnFee);
-                totalSalesLbl.Text = totalSales.ToString("C");
+                var totalSales = FilterResults.TotalSales(context);
+                totalSalesLbl.Text = totalSales;
             }
         }
+
+        
     }
 }

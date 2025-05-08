@@ -30,7 +30,6 @@
         {
             VideoGridView = new DataGridView();
             AddViewBtn = new Button();
-            Edit = new Button();
             delBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)VideoGridView).BeginInit();
             SuspendLayout();
@@ -39,11 +38,12 @@
             // 
             VideoGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             VideoGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            VideoGridView.Location = new Point(125, 53);
+            VideoGridView.Location = new Point(83, 57);
             VideoGridView.Name = "VideoGridView";
             VideoGridView.ReadOnly = true;
-            VideoGridView.Size = new Size(663, 385);
+            VideoGridView.Size = new Size(690, 433);
             VideoGridView.TabIndex = 0;
+            VideoGridView.CellDoubleClick += VideoGridView_CellDoubleClick;
             // 
             // AddViewBtn
             // 
@@ -51,7 +51,7 @@
             AddViewBtn.FlatStyle = FlatStyle.Popup;
             AddViewBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddViewBtn.ForeColor = Color.White;
-            AddViewBtn.Location = new Point(551, 24);
+            AddViewBtn.Location = new Point(617, 28);
             AddViewBtn.Name = "AddViewBtn";
             AddViewBtn.Size = new Size(75, 23);
             AddViewBtn.TabIndex = 1;
@@ -59,27 +59,13 @@
             AddViewBtn.UseVisualStyleBackColor = false;
             AddViewBtn.Click += AddViewBtn_Click;
             // 
-            // Edit
-            // 
-            Edit.BackColor = Color.FromArgb(0, 46, 68);
-            Edit.FlatStyle = FlatStyle.Popup;
-            Edit.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            Edit.ForeColor = Color.White;
-            Edit.Location = new Point(632, 24);
-            Edit.Name = "Edit";
-            Edit.Size = new Size(75, 23);
-            Edit.TabIndex = 2;
-            Edit.Text = "Edit";
-            Edit.UseVisualStyleBackColor = false;
-            Edit.Click += Edit_Click;
-            // 
             // delBtn
             // 
             delBtn.BackColor = Color.FromArgb(0, 46, 68);
             delBtn.FlatStyle = FlatStyle.Popup;
             delBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             delBtn.ForeColor = Color.White;
-            delBtn.Location = new Point(713, 24);
+            delBtn.Location = new Point(698, 28);
             delBtn.Name = "delBtn";
             delBtn.Size = new Size(75, 23);
             delBtn.TabIndex = 3;
@@ -91,9 +77,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(802, 539);
             Controls.Add(delBtn);
-            Controls.Add(Edit);
             Controls.Add(AddViewBtn);
             Controls.Add(VideoGridView);
             FormBorderStyle = FormBorderStyle.None;
@@ -110,7 +95,6 @@
         private Panel panel1;
         private Panel panel2;
         private Button AddViewBtn;
-        private Button Edit;
         private Button delBtn;
     }
 }

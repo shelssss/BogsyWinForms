@@ -26,7 +26,7 @@ namespace BogsyVideoStore
             {
                 var allRents = context.CustomerRented.ToList();
 
-               
+
                 Overdue.UpdateOverdue(allRents);
 
                 context.CustomerRented.UpdateRange(allRents);
@@ -42,11 +42,11 @@ namespace BogsyVideoStore
             {
                 LoadAllRents();
             }
-            else if (selectFilter.SelectedIndex == 1) 
+            else if (selectFilter.SelectedIndex == 1)
             {
                 using (var context = new AppDbContext())
                 {
-                    var RentedVid = context.CustomerRented.Where(r => r.status == "Rented").ToList();
+                    var RentedVid = FilterResults.ShowRented(context);
                     RentedListGrid.DataSource = RentedVid;
 
                 }
@@ -55,22 +55,58 @@ namespace BogsyVideoStore
             {
                 using (var context = new AppDbContext())
                 {
-                    var OverdueVid = context.CustomerRented.Where(r => r.status == "Overdue").ToList();
+                    var OverdueVid = FilterResults.ShowOverdue(context);
                     RentedListGrid.DataSource = OverdueVid;
 
                 }
             }
-            else if(selectFilter.SelectedIndex == 3)
+            else if (selectFilter.SelectedIndex == 3)
             {
                 using (var context = new AppDbContext())
                 {
-                    var ReturnedVid = context.CustomerRented.Where(r => r.status == "Returned").ToList();
+                    var ReturnedVid = FilterResults.ShowReturned(context);
                     RentedListGrid.DataSource = ReturnedVid;
 
                 }
             }
+        }
+        private void searchBar_TextChanged(object sender, EventArgs e)
+        {
+            using (var context = new AppDbContext())
+            {
+                string searchValue = searchBar.Text.Trim().ToLower();
+
+                var filtered = FilterResults.SearchName(context, searchValue);
+
+                RentedListGrid.DataSource = filtered;
+            }
+        }
 
 
+        private void dateRented_ValueChanged(object sender, EventArgs e)
+        {
+            using (var context = new AppDbContext())
+            {
+                DateOnly? selectedDate = dateRented.Checked ? DateOnly.FromDateTime(dateRented.Value.Date) : null;
+                var dateFilter = FilterResults.DateFilter(context, selectedDate);
+
+                RentedListGrid.DataSource = dateFilter;
+
+            }
+        }
+
+        private void searchFilter_Click(object sender, EventArgs e)
+        {
+            using (var context = new AppDbContext())
+            {
+                string searchValue = searchBar.Text.Trim().ToLower();
+                string selectedStatus = selectFilter.SelectedItem?.ToString();
+                DateOnly? selectedDate = dateRented.Checked ? DateOnly.FromDateTime(dateRented.Value.Date) : null;
+
+                var results = FilterResults.ApplyFilters(context, searchValue, selectedStatus, selectedDate);
+
+                RentedListGrid.DataSource = results;
+            }
         }
     }
 }

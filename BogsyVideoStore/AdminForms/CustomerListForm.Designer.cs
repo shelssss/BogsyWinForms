@@ -31,21 +31,28 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            panel2 = new Panel();
-            CustomerGridView = new DataGridView();
             AddCustomerBtn = new Button();
-            EditBtn = new Button();
-            panel2.SuspendLayout();
+            CustomerGridView = new DataGridView();
+            panel2 = new Panel();
+            nameLbl = new Label();
+            searchBar = new TextBox();
             ((System.ComponentModel.ISupportInitialize)CustomerGridView).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // panel2
+            // AddCustomerBtn
             // 
-            panel2.Controls.Add(CustomerGridView);
-            panel2.Location = new Point(114, 41);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(674, 397);
-            panel2.TabIndex = 0;
+            AddCustomerBtn.BackColor = Color.FromArgb(0, 46, 68);
+            AddCustomerBtn.FlatStyle = FlatStyle.Popup;
+            AddCustomerBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddCustomerBtn.ForeColor = SystemColors.ButtonHighlight;
+            AddCustomerBtn.Location = new Point(698, 28);
+            AddCustomerBtn.Name = "AddCustomerBtn";
+            AddCustomerBtn.Size = new Size(75, 23);
+            AddCustomerBtn.TabIndex = 1;
+            AddCustomerBtn.Text = "Add";
+            AddCustomerBtn.UseVisualStyleBackColor = false;
+            AddCustomerBtn.Click += AddCustomerBtn_Click;
             // 
             // CustomerGridView
             // 
@@ -67,8 +74,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             CustomerGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            CustomerGridView.Dock = DockStyle.Fill;
-            CustomerGridView.Location = new Point(0, 0);
+            CustomerGridView.Location = new Point(3, 3);
             CustomerGridView.Name = "CustomerGridView";
             CustomerGridView.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -79,61 +85,63 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             CustomerGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            CustomerGridView.Size = new Size(674, 397);
+            CustomerGridView.Size = new Size(690, 433);
             CustomerGridView.TabIndex = 0;
+            CustomerGridView.CellDoubleClick += CustomerGridView_CellDoubleClick;
             // 
-            // AddCustomerBtn
+            // panel2
             // 
-            AddCustomerBtn.BackColor = Color.FromArgb(0, 46, 68);
-            AddCustomerBtn.FlatStyle = FlatStyle.Popup;
-            AddCustomerBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            AddCustomerBtn.ForeColor = SystemColors.ButtonHighlight;
-            AddCustomerBtn.Location = new Point(623, 12);
-            AddCustomerBtn.Name = "AddCustomerBtn";
-            AddCustomerBtn.Size = new Size(75, 23);
-            AddCustomerBtn.TabIndex = 1;
-            AddCustomerBtn.Text = "Add";
-            AddCustomerBtn.UseVisualStyleBackColor = false;
-            AddCustomerBtn.Click += AddCustomerBtn_Click;
+            panel2.Controls.Add(CustomerGridView);
+            panel2.Location = new Point(80, 57);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(693, 439);
+            panel2.TabIndex = 0;
             // 
-            // EditBtn
+            // nameLbl
             // 
-            EditBtn.BackColor = Color.FromArgb(0, 46, 68);
-            EditBtn.FlatStyle = FlatStyle.Popup;
-            EditBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            EditBtn.ForeColor = Color.White;
-            EditBtn.Location = new Point(713, 12);
-            EditBtn.Name = "EditBtn";
-            EditBtn.Size = new Size(75, 23);
-            EditBtn.TabIndex = 2;
-            EditBtn.Text = "Edit";
-            EditBtn.UseVisualStyleBackColor = false;
-            EditBtn.Click += EditBtn_Click;
+            nameLbl.AutoSize = true;
+            nameLbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            nameLbl.ForeColor = Color.FromArgb(0, 46, 68);
+            nameLbl.Location = new Point(80, 10);
+            nameLbl.Name = "nameLbl";
+            nameLbl.Size = new Size(46, 15);
+            nameLbl.TabIndex = 6;
+            nameLbl.Text = "Name: ";
+            // 
+            // searchBar
+            // 
+            searchBar.Location = new Point(80, 28);
+            searchBar.Name = "searchBar";
+            searchBar.PlaceholderText = "Search...";
+            searchBar.Size = new Size(165, 23);
+            searchBar.TabIndex = 5;
+            searchBar.TextChanged += searchBar_TextChanged;
             // 
             // CustomerListForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(802, 453);
-            Controls.Add(EditBtn);
+            ClientSize = new Size(802, 539);
+            Controls.Add(nameLbl);
+            Controls.Add(searchBar);
             Controls.Add(AddCustomerBtn);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "CustomerListForm";
             Text = "CustomerListForm";
             Load += CustomerListForm_Load;
-            panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)CustomerGridView).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
         private Button button1;
-        private Panel panel2;
-        private DataGridView CustomerGridView;
         private Button AddCustomerBtn;
-        private Button EditBtn;
+        private DataGridView CustomerGridView;
+        private Panel panel2;
+        private Label nameLbl;
+        private TextBox searchBar;
     }
 }

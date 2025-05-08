@@ -1,4 +1,5 @@
-﻿using BogsyVideoStore.Models;
+﻿using BogsyVideoStore.Helpers;
+using BogsyVideoStore.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,25 +37,21 @@ namespace BogsyVideoStore
         {
             using (var context = new AppDbContext())
             {
-                var videos = context.Video.OrderBy(v => v.Title).ToList();  
+                var videos = context.Video.OrderBy(v => v.Title).ToList();
                 VideoGridView.DataSource = videos;
             }
         }
 
-        private void Edit_Click(object sender, EventArgs e)
+        private void VideoGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (VideoGridView.SelectedRows.Count > 0)
+            if(e.RowIndex >= 0)
             {
-                var selectedRow = VideoGridView.SelectedRows[0];
+                var selectedRow = VideoGridView.Rows[e.RowIndex];
                 var video = (Video)selectedRow.DataBoundItem;
 
                 var editForm = new AddVideo(video);
                 editForm.ShowDialog();
                 LoadVideo();
-            }
-            else
-            {
-                MessageBox.Show("Please select a video to edit.");
             }
         }
 
@@ -67,30 +64,10 @@ namespace BogsyVideoStore
 
                 using (var context = new AppDbContext())
                 {
-                    var videoToDelete = context.Video.FirstOrDefault(c => c.Id == video.Id);
-                    if (videoToDelete != null)
+                    bool deleted = VideoCrud.DeleteVideo(context, video.Id);
+                    if (deleted)
                     {
-                        if (videoToDelete.OutCount > 0)
-                        {
-                            MessageBox.Show("Cannot delete this video because it is currently rented out.",
-                                            "Delete Blocked",
-                                            MessageBoxButtons.OK,
-                                            MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        var confirm = MessageBox.Show("Are you sure you want to delete this Video?",
-                                                      "Confirm Delete",
-                                                      MessageBoxButtons.YesNo,
-                                                      MessageBoxIcon.Warning);
-
-                        if (confirm == DialogResult.Yes)
-                        {
-                            context.Video.Remove(videoToDelete);
-                            context.SaveChanges();
-                            MessageBox.Show("Video deleted!");
-                            LoadVideo();
-                        }
+                        LoadVideo(); 
                     }
                 }
             }
@@ -99,5 +76,7 @@ namespace BogsyVideoStore
                 MessageBox.Show("Please select a video to delete.");
             }
         }
+
+       
     }
 }

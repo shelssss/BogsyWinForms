@@ -65,7 +65,7 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(userNumLbl);
             panel1.Controls.Add(userCountLbl);
-            panel1.Location = new Point(100, 12);
+            panel1.Location = new Point(88, 35);
             panel1.Name = "panel1";
             panel1.Size = new Size(224, 128);
             panel1.TabIndex = 0;
@@ -109,7 +109,7 @@
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(vcdNumLbl);
             panel2.Controls.Add(vcdCountLbl);
-            panel2.Location = new Point(330, 12);
+            panel2.Location = new Point(318, 35);
             panel2.Name = "panel2";
             panel2.Size = new Size(224, 128);
             panel2.TabIndex = 2;
@@ -153,7 +153,7 @@
             panel3.Controls.Add(pictureBox3);
             panel3.Controls.Add(dvdNumLbl);
             panel3.Controls.Add(dvdCountLbl);
-            panel3.Location = new Point(560, 12);
+            panel3.Location = new Point(548, 35);
             panel3.Name = "panel3";
             panel3.Size = new Size(224, 128);
             panel3.TabIndex = 3;
@@ -197,7 +197,7 @@
             panel4.Controls.Add(pictureBox4);
             panel4.Controls.Add(overNumLbl);
             panel4.Controls.Add(overCountLbl);
-            panel4.Location = new Point(100, 164);
+            panel4.Location = new Point(88, 187);
             panel4.Name = "panel4";
             panel4.Size = new Size(224, 128);
             panel4.TabIndex = 4;
@@ -240,7 +240,7 @@
             panel5.BackColor = Color.FromArgb(0, 46, 68);
             panel5.Controls.Add(totalSalesLbl);
             panel5.Controls.Add(saleLbl);
-            panel5.Location = new Point(330, 164);
+            panel5.Location = new Point(318, 187);
             panel5.Name = "panel5";
             panel5.Size = new Size(224, 128);
             panel5.TabIndex = 5;
