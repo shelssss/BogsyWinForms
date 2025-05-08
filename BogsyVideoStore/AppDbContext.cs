@@ -14,6 +14,7 @@ namespace BogsyVideoStore
         public DbSet<Video> Video { get; set; } 
         public DbSet<CustomerRented> CustomerRented { get; set; }
         public DbSet<RentedVideo> RentedVideos { get; set; }
+        public DbSet<CustomerQueries> CustomerQueries { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
