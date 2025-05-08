@@ -62,7 +62,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(831, 45);
+            panel1.Size = new Size(1038, 45);
             panel1.TabIndex = 0;
             // 
             // bvsLbl
@@ -100,7 +100,7 @@
             flowLayoutPanel1.Location = new Point(0, 45);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(0, 30, 0, 0);
-            flowLayoutPanel1.Size = new Size(188, 467);
+            flowLayoutPanel1.Size = new Size(188, 533);
             flowLayoutPanel1.TabIndex = 1;
             // 
             // panel2
@@ -234,13 +234,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(831, 512);
+            ClientSize = new Size(1038, 578);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             IsMdiContainer = true;
+            MinimizeBox = false;
             Name = "DashboardForm";
             Text = "Admin";
-            WindowState = FormWindowState.Maximized;
             Load += DashboardForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

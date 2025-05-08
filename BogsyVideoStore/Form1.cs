@@ -1,4 +1,5 @@
 using BogsyVideoStore.Helpers;
+using BogsyVideoStore.Modals;
 
 namespace BogsyVideoStore
 {
@@ -45,6 +46,12 @@ namespace BogsyVideoStore
                     MessageBox.Show("Invalid username or password.");
                 }
             }
+        }
+
+        private void passResetLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var passwordReset = new ForgotPassword();
+            passwordReset.ShowDialog();
         }
     }
 }

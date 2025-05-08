@@ -34,6 +34,8 @@
             loginBtn = new Button();
             passwordTxt = new TextBox();
             pictureBox1 = new PictureBox();
+            passResetLink = new LinkLabel();
+            passResetLbl = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -87,12 +89,39 @@
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
+            // passResetLink
+            // 
+            passResetLink.ActiveLinkColor = Color.FromArgb(0, 46, 68);
+            passResetLink.AutoSize = true;
+            passResetLink.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            passResetLink.LinkBehavior = LinkBehavior.HoverUnderline;
+            passResetLink.LinkColor = Color.White;
+            passResetLink.Location = new Point(288, 344);
+            passResetLink.Name = "passResetLink";
+            passResetLink.Size = new Size(68, 15);
+            passResetLink.TabIndex = 6;
+            passResetLink.TabStop = true;
+            passResetLink.Text = "Click Here!";
+            passResetLink.LinkClicked += passResetLink_LinkClicked;
+            // 
+            // passResetLbl
+            // 
+            passResetLbl.AutoSize = true;
+            passResetLbl.ForeColor = Color.White;
+            passResetLbl.Location = new Point(261, 329);
+            passResetLbl.Name = "passResetLbl";
+            passResetLbl.Size = new Size(123, 15);
+            passResetLbl.TabIndex = 7;
+            passResetLbl.Text = "Forgot you password?";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 46, 68);
             ClientSize = new Size(652, 382);
+            Controls.Add(passResetLbl);
+            Controls.Add(passResetLink);
             Controls.Add(passwordTxt);
             Controls.Add(loginBtn);
             Controls.Add(userNameTxt);
@@ -101,6 +130,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -114,5 +144,7 @@
         private Button loginBtn;
         private TextBox passwordTxt;
         private PictureBox pictureBox1;
+        private LinkLabel passResetLink;
+        private Label passResetLbl;
     }
 }
