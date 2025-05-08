@@ -18,6 +18,7 @@ namespace BogsyVideoStore
         public AddCustomer()
         {
             InitializeComponent();
+            _customerToEdit = null;
         }
         public AddCustomer(Customer customer)
         {
@@ -30,75 +31,47 @@ namespace BogsyVideoStore
             BdayPicker.Value = customer.Birthday.ToDateTime(TimeOnly.MinValue);
             passwordTxt.Enabled = false;
         }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void AddCustomerBtn_Click(object sender, EventArgs e)
         {
-
             string name = customerNameTxt.Text.Trim();
             string username = userNameTxt.Text.Trim();
-            string password = passwordTxt.Text.Trim(); 
+            string password = passwordTxt.Text.Trim();
+            DateOnly birthday = DateOnly.FromDateTime(BdayPicker.Value);
 
 
             using (var context = new AppDbContext())
-            {
+            {   
+                
+                //edit 
                 if (_customerToEdit != null)
                 {
-                    var customer = context.Customer.FirstOrDefault(c => c.Id == _customerToEdit.Id);
-                    if (customer != null)
+                    if (_customerToEdit != null)
                     {
-                        customer.Name = name;
-                        customer.Username = username;
-                        customer.Birthday = DateOnly.FromDateTime(BdayPicker.Value);
-                        
-                    
+                        bool UpdateSuccess = Crud.EditCustomer(context, _customerToEdit, name, username, birthday);
+                        if (UpdateSuccess)
+                        {
+                            this.Close();
+                        }
                     }
+
                 }
                 else
                 {
-                    if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                    bool InsertSuccess = Crud.AddCustomer(context, name, username, password, birthday);
+
+                    if (InsertSuccess)
                     {
-                        MessageBox.Show("Name, Username, and Password cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
+                        this.Close(); 
                     }
 
-                    bool usernameExists = context.Customer.Any(c => c.Username == username);
-                    if (usernameExists)
-                    {
-                        MessageBox.Show("Username already exists. Please choose another one.", "Duplicate Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    var customer = new Customer
-                    {
-                        Id = Guid.NewGuid(),
-                        Name = name,
-                        Username = username,
-                        Password = PassHash.HashPassword(password),
-                        Role = "Customer",
-                        Birthday = DateOnly.FromDateTime(BdayPicker.Value)
-                    };
-                    context.Customer.Add(customer);
                 }
+                
 
-                context.SaveChanges();
-                MessageBox.Show("Customer saved!");
             }
-
-            this.Close();
+            
         }
 
-        private void AddCustomer_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

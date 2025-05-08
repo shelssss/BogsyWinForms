@@ -35,13 +35,17 @@ namespace BogsyVideoStore
 
         }
 
-        private void AddVideo_Load(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void AddVidBtn_Click(object sender, EventArgs e)
-        {
+        {   
+            string videoTitle = TitleTxt.Text;
+            string description = DescTxt.Text;
+            string category = CategoryDropDown.Text;
+            int intCount = (int)CurrentInTxt.Value;
+            int maxRentDays = int.Parse(maxRentCmbx.Text);
+            string imgPath = selectedImagePath;
+
             if (!IsVideoInputValid())
             {
                 MessageBox.Show("Please fill in all fields properly.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -52,45 +56,31 @@ namespace BogsyVideoStore
 
                 if (_videoToEdit != null)
                 {
-                    var video = context.Video.FirstOrDefault(v => v.Id == _videoToEdit.Id);
-                    if (video != null)
+                    if (_videoToEdit != null)
                     {
+                        bool sucessEdit = VideoCrud.EditVideo(context, _videoToEdit, videoTitle, description, category,
+                            intCount, maxRentDays, imgPath);
+                        if (sucessEdit)
+                        {
+                            this.Close();
+                        }
 
-                        video.Title = TitleTxt.Text;
-                        video.Description = DescTxt.Text;
-                        video.Category = CategoryDropDown.Text;
-                        video.InCount = (int)CurrentInTxt.Value;
-                        video.MaxRentDays = int.Parse(maxRentCmbx.Text);
-                        video.ImagePath = selectedImagePath;    
                     }
                 }
                 else
                 {
-                    var video = new Video
+                    bool successInsert = VideoCrud.AddVideo(context, videoTitle, description, category, intCount,
+                        maxRentDays, imgPath);
+
+                    if (successInsert)
                     {
-                        Id = new Guid(),
-                        Title = TitleTxt.Text,
-                        Description = DescTxt.Text,
-                        Category = CategoryDropDown.Text,
-                        InCount = (int)CurrentInTxt.Value,
-                        OutCount = 0,
-                        MaxRentDays = int.Parse(maxRentCmbx.Text),
-                        ImagePath = selectedImagePath
-                    };
-                    context.Add(video);
-
+                        this.Close();
+                    }
                 }
-                context.SaveChanges();
-                MessageBox.Show("Video saved!");
-
             }
-            this.Close();
         }
 
-        private void TitleTxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private bool IsVideoInputValid()
         {
@@ -108,6 +98,7 @@ namespace BogsyVideoStore
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 selectedImagePath = ofd.FileName;
+                uploadImgBtn.Text = ofd.FileName;
             }
         }
     }

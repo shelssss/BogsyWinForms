@@ -40,24 +40,25 @@
             uploadImgBtn = new Button();
             maxRentLbl = new Label();
             maxRentCmbx = new ComboBox();
+            custInfoLlb = new Label();
             ((System.ComponentModel.ISupportInitialize)CurrentInTxt).BeginInit();
             SuspendLayout();
             // 
             // TitleTxt
             // 
             TitleTxt.Font = new Font("Segoe UI", 12F);
-            TitleTxt.Location = new Point(60, 37);
+            TitleTxt.Location = new Point(90, 91);
             TitleTxt.Name = "TitleTxt";
             TitleTxt.PlaceholderText = "Title";
-            TitleTxt.Size = new Size(192, 29);
+            TitleTxt.Size = new Size(231, 29);
             TitleTxt.TabIndex = 0;
-            TitleTxt.TextChanged += TitleTxt_TextChanged;
+            
             // 
             // CurrentInTxt
             // 
-            CurrentInTxt.Location = new Point(60, 252);
+            CurrentInTxt.Location = new Point(90, 316);
             CurrentInTxt.Name = "CurrentInTxt";
-            CurrentInTxt.Size = new Size(192, 23);
+            CurrentInTxt.Size = new Size(231, 23);
             CurrentInTxt.TabIndex = 1;
             // 
             // CategoryDropDown
@@ -67,18 +68,18 @@
             CategoryDropDown.ForeColor = SystemColors.WindowFrame;
             CategoryDropDown.FormattingEnabled = true;
             CategoryDropDown.Items.AddRange(new object[] { "DVD", "VCD" });
-            CategoryDropDown.Location = new Point(60, 145);
+            CategoryDropDown.Location = new Point(90, 204);
             CategoryDropDown.Name = "CategoryDropDown";
-            CategoryDropDown.Size = new Size(192, 29);
+            CategoryDropDown.Size = new Size(231, 29);
             CategoryDropDown.TabIndex = 2;
             // 
             // DescTxt
             // 
             DescTxt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DescTxt.Location = new Point(60, 91);
+            DescTxt.Location = new Point(90, 148);
             DescTxt.Name = "DescTxt";
             DescTxt.PlaceholderText = "Description";
-            DescTxt.Size = new Size(192, 29);
+            DescTxt.Size = new Size(231, 29);
             DescTxt.TabIndex = 3;
             // 
             // AddVidBtn
@@ -87,9 +88,9 @@
             AddVidBtn.FlatStyle = FlatStyle.Popup;
             AddVidBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddVidBtn.ForeColor = Color.White;
-            AddVidBtn.Location = new Point(108, 330);
+            AddVidBtn.Location = new Point(139, 406);
             AddVidBtn.Name = "AddVidBtn";
-            AddVidBtn.Size = new Size(83, 39);
+            AddVidBtn.Size = new Size(135, 39);
             AddVidBtn.TabIndex = 4;
             AddVidBtn.Text = "Save";
             AddVidBtn.UseVisualStyleBackColor = false;
@@ -100,7 +101,7 @@
             titleLbl.AutoSize = true;
             titleLbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             titleLbl.ForeColor = Color.FromArgb(0, 46, 68);
-            titleLbl.Location = new Point(60, 19);
+            titleLbl.Location = new Point(90, 73);
             titleLbl.Name = "titleLbl";
             titleLbl.Size = new Size(35, 15);
             titleLbl.TabIndex = 5;
@@ -111,7 +112,7 @@
             descLbl.AutoSize = true;
             descLbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             descLbl.ForeColor = Color.FromArgb(0, 46, 68);
-            descLbl.Location = new Point(60, 73);
+            descLbl.Location = new Point(90, 130);
             descLbl.Name = "descLbl";
             descLbl.Size = new Size(74, 15);
             descLbl.TabIndex = 6;
@@ -122,7 +123,7 @@
             catLbl.AutoSize = true;
             catLbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             catLbl.ForeColor = Color.FromArgb(0, 46, 68);
-            catLbl.Location = new Point(60, 127);
+            catLbl.Location = new Point(90, 186);
             catLbl.Name = "catLbl";
             catLbl.Size = new Size(60, 15);
             catLbl.TabIndex = 7;
@@ -133,7 +134,7 @@
             qtyLbl.AutoSize = true;
             qtyLbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             qtyLbl.ForeColor = Color.FromArgb(0, 46, 68);
-            qtyLbl.Location = new Point(60, 234);
+            qtyLbl.Location = new Point(90, 298);
             qtyLbl.Name = "qtyLbl";
             qtyLbl.Size = new Size(58, 15);
             qtyLbl.TabIndex = 8;
@@ -142,9 +143,9 @@
             // uploadImgBtn
             // 
             uploadImgBtn.FlatStyle = FlatStyle.Popup;
-            uploadImgBtn.Location = new Point(60, 290);
+            uploadImgBtn.Location = new Point(90, 355);
             uploadImgBtn.Name = "uploadImgBtn";
-            uploadImgBtn.Size = new Size(192, 29);
+            uploadImgBtn.Size = new Size(231, 29);
             uploadImgBtn.TabIndex = 9;
             uploadImgBtn.Text = "Select Image";
             uploadImgBtn.UseVisualStyleBackColor = true;
@@ -155,7 +156,7 @@
             maxRentLbl.AutoSize = true;
             maxRentLbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             maxRentLbl.ForeColor = Color.FromArgb(0, 46, 68);
-            maxRentLbl.Location = new Point(60, 184);
+            maxRentLbl.Location = new Point(90, 242);
             maxRentLbl.Name = "maxRentLbl";
             maxRentLbl.Size = new Size(64, 15);
             maxRentLbl.TabIndex = 11;
@@ -168,16 +169,28 @@
             maxRentCmbx.ForeColor = SystemColors.WindowFrame;
             maxRentCmbx.FormattingEnabled = true;
             maxRentCmbx.Items.AddRange(new object[] { "1", "2", "3" });
-            maxRentCmbx.Location = new Point(60, 202);
+            maxRentCmbx.Location = new Point(90, 260);
             maxRentCmbx.Name = "maxRentCmbx";
-            maxRentCmbx.Size = new Size(192, 29);
+            maxRentCmbx.Size = new Size(231, 29);
             maxRentCmbx.TabIndex = 10;
+            // 
+            // custInfoLlb
+            // 
+            custInfoLlb.AutoSize = true;
+            custInfoLlb.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            custInfoLlb.ForeColor = Color.FromArgb(0, 46, 68);
+            custInfoLlb.Location = new Point(108, 29);
+            custInfoLlb.Name = "custInfoLlb";
+            custInfoLlb.Size = new Size(195, 30);
+            custInfoLlb.TabIndex = 12;
+            custInfoLlb.Text = "Video Information";
             // 
             // AddVideo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(318, 390);
+            ClientSize = new Size(413, 481);
+            Controls.Add(custInfoLlb);
             Controls.Add(maxRentLbl);
             Controls.Add(maxRentCmbx);
             Controls.Add(uploadImgBtn);
@@ -193,7 +206,6 @@
             Name = "AddVideo";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddVideo";
-            Load += AddVideo_Load;
             ((System.ComponentModel.ISupportInitialize)CurrentInTxt).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -213,5 +225,6 @@
         private Button uploadImgBtn;
         private Label maxRentLbl;
         private ComboBox maxRentCmbx;
+        private Label custInfoLlb;
     }
 }
