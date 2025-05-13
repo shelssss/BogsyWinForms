@@ -56,7 +56,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(188, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(612, 45);
+            panel1.Size = new Size(946, 45);
             panel1.TabIndex = 2;
             // 
             // bvsLbl
@@ -70,6 +70,7 @@
             bvsLbl.Size = new Size(185, 28);
             bvsLbl.TabIndex = 2;
             bvsLbl.Text = "Bogsy Video Store";
+            bvsLbl.Click += bvsLbl_Click;
             // 
             // hamPic
             // 
@@ -92,7 +93,7 @@
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(0, 30, 0, 0);
-            flowLayoutPanel1.Size = new Size(188, 450);
+            flowLayoutPanel1.Size = new Size(188, 681);
             flowLayoutPanel1.TabIndex = 3;
             // 
             // panel4
@@ -147,13 +148,13 @@
             // 
             panel7.Location = new Point(3, 159);
             panel7.Name = "panel7";
-            panel7.Size = new Size(185, 218);
+            panel7.Size = new Size(185, 445);
             panel7.TabIndex = 10;
             // 
             // panel6
             // 
             panel6.Controls.Add(logoutBtn);
-            panel6.Location = new Point(3, 383);
+            panel6.Location = new Point(3, 610);
             panel6.Name = "panel6";
             panel6.Size = new Size(195, 57);
             panel6.TabIndex = 9;
@@ -178,13 +179,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1134, 681);
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             IsMdiContainer = true;
             Name = "CustomerForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Customer";
-            WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)hamPic).EndInit();

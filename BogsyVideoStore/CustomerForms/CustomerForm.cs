@@ -20,32 +20,32 @@ namespace BogsyVideoStore
         private Customer currentCustomer;
         private RentedVidForm RentedListForm;
         CloseChildrenMDI CloseChildrenMDI = new CloseChildrenMDI();
-      
+
         public CustomerForm(Customer customer)
         {
             InitializeComponent();
             currentCustomer = customer;
 
-            RentVidForm = new RentVideoForm(currentCustomer.Name);
+            RentVidForm = new RentVideoForm(currentCustomer.Username);
             RentVidForm.FormClosed += RentVidForm_FormClose;
             RentVidForm.MdiParent = this;
             RentVidForm.Dock = DockStyle.Fill;
             RentVidForm.Show();
 
         }
-        
+
         private void videoBtn_Click(object sender, EventArgs e)
         {
             CloseChildrenMDI.CloseAllChildForms();
             if (RentVidForm == null)
             {
-                RentVidForm = new RentVideoForm(currentCustomer.Name);
+                RentVidForm = new RentVideoForm(currentCustomer.Username);
                 RentVidForm.FormClosed += RentVidForm_FormClose;
                 RentVidForm.MdiParent = this;
                 RentVidForm.Dock = DockStyle.Fill;
                 RentVidForm.Show();
             }
-            
+
             else
             {
                 RentVidForm.Activate();
@@ -62,7 +62,7 @@ namespace BogsyVideoStore
             CloseChildrenMDI.CloseAllChildForms();
             if (RentedListForm == null)
             {
-                RentedListForm = new RentedVidForm(currentCustomer.Name);
+                RentedListForm = new RentedVidForm(currentCustomer.Username);
                 RentedListForm.FormClosed += RentedListForm_FormClose;
                 RentedListForm.MdiParent = this;
                 RentedListForm.Dock = DockStyle.Fill;
@@ -92,6 +92,9 @@ namespace BogsyVideoStore
             }
         }
 
+        private void bvsLbl_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
