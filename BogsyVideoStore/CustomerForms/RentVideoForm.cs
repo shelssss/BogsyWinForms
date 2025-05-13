@@ -1,4 +1,5 @@
-﻿using BogsyVideoStore.Models;
+﻿using BogsyVideoStore.Helpers;
+using BogsyVideoStore.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,13 @@ namespace BogsyVideoStore
 {
     public partial class RentVideoForm : Form
     {
-        private string currentCustomerName;
+        private string currentCustomerUsername;
         private RentedVideo RentedList;
 
-        public RentVideoForm(string customerName)
+        public RentVideoForm(string customerUsername)
         {
             InitializeComponent();
-            currentCustomerName = customerName;
+            currentCustomerUsername = customerUsername;
             LoadVideos();
 
         }
@@ -29,9 +30,6 @@ namespace BogsyVideoStore
         private void LoadVideos()
         {
             videoFlowPanel.Controls.Clear();
-
-
-
             using (var context = new AppDbContext())
             {
                 
@@ -39,6 +37,8 @@ namespace BogsyVideoStore
                 
                 foreach (var video in videos)
                 {
+                    int cost = video.Category == "DVD" ? 50 : 25;
+
                     Panel card = new Panel
                     {
                         Width = 200,
@@ -58,7 +58,7 @@ namespace BogsyVideoStore
 
                     if (!string.IsNullOrEmpty(video.ImagePath) && File.Exists(video.ImagePath))
                     {
-                        pictureBox.Image = Image.FromFile(video.ImagePath); // Load the image
+                        pictureBox.Image = Image.FromFile(video.ImagePath); 
                     }
 
                    
@@ -76,7 +76,7 @@ namespace BogsyVideoStore
                    
                     Label category = new Label
                     {
-                        Text = $"Category: {video.Category}",
+                        Text = $"Category: {video.Category}-(₱{cost})",
                         AutoSize = false,
                         Width = 180,
                         Height = 20,
@@ -96,10 +96,10 @@ namespace BogsyVideoStore
                     };
 
                   
-                    int cost = video.Category == "DVD" ? 50 : 25;
-                    Label costLabel = new Label
+            
+                    Label maxRent = new Label
                     {
-                        Text = $"Cost: ₱{cost}",
+                        Text = $"Rent Days: {video.MaxRentDays}",
                         AutoSize = false,
                         Width = 180,
                         Height = 20,
@@ -123,70 +123,17 @@ namespace BogsyVideoStore
                    
                     rentBtn.Click += (s, e) =>
                     {
-                        RentVideo(video, currentCustomerName);
+                        TransactionVideo.RentAVideo(video, currentCustomerUsername);
+                        LoadVideos();
                     };
                     card.Controls.Add(pictureBox);
                     card.Controls.Add(title);
                     card.Controls.Add(category);
                     card.Controls.Add(stock);
-                    card.Controls.Add(costLabel);
+                    card.Controls.Add(maxRent);
                     card.Controls.Add(rentBtn);
 
                     videoFlowPanel.Controls.Add(card);
-                }
-            }
-        }
-
-        private void RentVideo(Video video, string customerName)
-        {
-            
-            int cost = video.Category == "DVD" ? 50 : 25;
-
-            
-            var result = MessageBox.Show(
-                $"You are about to rent '{video.Title}' ({video.Category}) for ₱{cost}.\n" +
-                $"You can only keep the video for {video.MaxRentDays} day/s.\n" +
-                "After that, ₱5 will be charged for each extra day.\n\n" +
-                "Do you want to continue?",
-                "Confirm Rental",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Information
-            );
-
-            if (result == DialogResult.No)
-                return;
-
-            using (var context = new AppDbContext())
-            {
-                var v = context.Video.FirstOrDefault(x => x.Id == video.Id);
-                if (v != null)
-                {
-                    if (v.InCount > 0)
-                    {
-                        v.InCount -= 1;
-                        v.OutCount += 1;
-
-                        var rental = new CustomerRented
-                        {
-                            Id = Guid.NewGuid(),
-                            CustomerName = customerName,
-                            VideoRented = v.Title,
-                            RentedDate = DateOnly.FromDateTime(DateTime.Today),
-                            RentCost = cost,
-                            status = "Rented",
-                            VideoId = v.Id.ToString(),
-                        };
-
-                        context.CustomerRented.Add(rental);
-                        context.SaveChanges();
-
-                        MessageBox.Show($"'{v.Title}' rented successfully by {customerName}.");
-                        LoadVideos();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No copies left to rent.");
-                    }
                 }
             }
         }
