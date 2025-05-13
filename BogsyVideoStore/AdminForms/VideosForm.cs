@@ -44,7 +44,7 @@ namespace BogsyVideoStore
 
         private void VideoGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 var selectedRow = VideoGridView.Rows[e.RowIndex];
                 var video = (Video)selectedRow.DataBoundItem;
@@ -67,7 +67,7 @@ namespace BogsyVideoStore
                     bool deleted = VideoCrud.DeleteVideo(context, video.Id);
                     if (deleted)
                     {
-                        LoadVideo(); 
+                        LoadVideo();
                     }
                 }
             }
@@ -77,6 +77,15 @@ namespace BogsyVideoStore
             }
         }
 
-       
+        private void searchBar_TextChanged(object sender, EventArgs e)
+        {
+            using (var context = new AppDbContext()) 
+            {   
+                string search = searchBar.Text.Trim();
+                var searchTitle = FilterResults.SearchTitle(context, search);
+
+                VideoGridView.DataSource = searchTitle;
+            }
+        }
     }
 }

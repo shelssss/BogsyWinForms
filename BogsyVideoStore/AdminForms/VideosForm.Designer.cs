@@ -31,6 +31,8 @@
             VideoGridView = new DataGridView();
             AddViewBtn = new Button();
             delBtn = new Button();
+            titleLbl = new Label();
+            searchBar = new TextBox();
             ((System.ComponentModel.ISupportInitialize)VideoGridView).BeginInit();
             SuspendLayout();
             // 
@@ -73,11 +75,33 @@
             delBtn.UseVisualStyleBackColor = false;
             delBtn.Click += delBtn_Click;
             // 
+            // titleLbl
+            // 
+            titleLbl.AutoSize = true;
+            titleLbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            titleLbl.ForeColor = Color.FromArgb(0, 46, 68);
+            titleLbl.Location = new Point(83, 10);
+            titleLbl.Name = "titleLbl";
+            titleLbl.Size = new Size(35, 15);
+            titleLbl.TabIndex = 8;
+            titleLbl.Text = "Title:";
+            // 
+            // searchBar
+            // 
+            searchBar.Location = new Point(83, 28);
+            searchBar.Name = "searchBar";
+            searchBar.PlaceholderText = "Search...";
+            searchBar.Size = new Size(165, 23);
+            searchBar.TabIndex = 7;
+            searchBar.TextChanged += searchBar_TextChanged;
+            // 
             // VideosForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(802, 539);
+            Controls.Add(titleLbl);
+            Controls.Add(searchBar);
             Controls.Add(delBtn);
             Controls.Add(AddViewBtn);
             Controls.Add(VideoGridView);
@@ -87,6 +111,7 @@
             Load += VideosForm_Load;
             ((System.ComponentModel.ISupportInitialize)VideoGridView).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -96,5 +121,7 @@
         private Panel panel2;
         private Button AddViewBtn;
         private Button delBtn;
+        private Label titleLbl;
+        private TextBox searchBar;
     }
 }
