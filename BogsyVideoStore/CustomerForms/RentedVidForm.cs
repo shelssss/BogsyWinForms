@@ -1,4 +1,6 @@
 ﻿using BogsyVideoStore.Helpers;
+using BogsyVideoStore.Modals;
+using BogsyVideoStore.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +28,7 @@ namespace BogsyVideoStore
             using (var context = new AppDbContext())
             {
                 var rentedVideos = context.CustomerRented
-                    .Where(r => r.CustomerName == currentCustomerName && r.ReturnedDate == null)
+                    .Where(r => r.CustomerUsername == currentCustomerName && r.ReturnedDate == null)
                     .ToList();
 
 
@@ -45,34 +47,80 @@ namespace BogsyVideoStore
             {
                 var rentalId = (Guid)RentedVidGrid.CurrentRow.Cells["Id"].Value;
 
-                using (var context = new AppDbContext())
-                {
-                    var rental = context.CustomerRented.FirstOrDefault(r => r.Id == rentalId);
-                    if (rental != null && rental.ReturnedDate == null)
+               bool ReturnSucess = TransactionVideo.ReturnVideo(rentalId);
+                if (ReturnSucess) 
+                {   
+                    LoadRentedVideo();
+                    using (var context = new AppDbContext())
                     {
-                        rental.ReturnedDate = DateOnly.FromDateTime(DateTime.Today);
-
-                        // Increase video inventory
-                        var video = context.Video.FirstOrDefault(v => v.Title == rental.VideoRented);
-                        if (video != null)
+                        var rental = context.CustomerRented.FirstOrDefault(r => r.Id == rentalId);
+                        if (rental != null)
                         {
-                            video.InCount += 1;
-                            video.OutCount -= 1;
-                            rental.status = "Returned";
+                            var video = context.Video.FirstOrDefault(v => v.Id.ToString() == rental.VideoId);
+                            if (video != null)
+                            {
+                                var rentDetails = new RentedDetails
+                                {
+                                    CustomerUsername = rental.CustomerUsername,
+                                    VideoRented = rental.VideoRented,
+                                    Category = video.Category,
+                                    MaxRentDays = video.MaxRentDays,
+                                    RentedDate = rental.RentedDate,
+                                    ReturnedDate = rental.ReturnedDate,
+                                    RentCost = rental.RentCost,
+                                    LateReturnFee = rental.LateReturnFee,
+                                    Status = rental.status
+                                };
+
+                                var printDialog = new RentDetails(rentDetails);
+                                printDialog.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Related video details not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-
-                        context.SaveChanges();
-
-                        MessageBox.Show($"'{rental.VideoRented}' returned by {rental.CustomerName}. Late Fee: ${rental.LateReturnFee}");
-                        LoadRentedVideo(); 
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Please select a video to return.");
+            }
+                
+            
         }
 
-        private void StoreReturnVideos()
+        private void statusCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
+            if (statusCbx.SelectedIndex == 0)
+            {
+                using (var context = new AppDbContext())
+                {
+                    var RentedVid = FilterResults.ShowRentCustomer(context, currentCustomerName);
+                    RentedVidGrid.DataSource = RentedVid;
 
+                }
+            }
+            else if (statusCbx.SelectedIndex == 1)
+            {
+                using (var context = new AppDbContext())
+                {
+                    var OverdueVid = FilterResults.ShowOverCustomer(context, currentCustomerName);  
+                    RentedVidGrid.DataSource = OverdueVid;
+
+                }
+            }
+            else if (statusCbx.SelectedIndex == 2)
+            {
+                using (var context = new AppDbContext())
+                {
+                    var ReturnedVid = FilterResults.ShowReturnCustomer(context, currentCustomerName);
+                    RentedVidGrid.DataSource = ReturnedVid;
+
+                }
+            }
         }
     }
 }
