@@ -203,13 +203,13 @@
             // 
             panel7.Location = new Point(3, 285);
             panel7.Name = "panel7";
-            panel7.Size = new Size(195, 101);
+            panel7.Size = new Size(195, 186);
             panel7.TabIndex = 8;
             // 
             // panel6
             // 
             panel6.Controls.Add(logoutBtn);
-            panel6.Location = new Point(3, 392);
+            panel6.Location = new Point(3, 477);
             panel6.Name = "panel6";
             panel6.Size = new Size(195, 57);
             panel6.TabIndex = 7;
@@ -239,8 +239,10 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             IsMdiContainer = true;
+            MaximizeBox = false;
             MinimizeBox = false;
             Name = "DashboardForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin";
             Load += DashboardForm_Load;
             panel1.ResumeLayout(false);

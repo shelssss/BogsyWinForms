@@ -44,15 +44,15 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(166, 161);
+            label1.Location = new Point(196, 161);
             label1.Name = "label1";
-            label1.Size = new Size(316, 37);
+            label1.Size = new Size(252, 37);
             label1.TabIndex = 0;
-            label1.Text = "BVS: Bogsy Video Store";
+            label1.Text = "Bogsy Video Store";
             // 
             // userNameTxt
             // 
-            userNameTxt.Location = new Point(175, 225);
+            userNameTxt.Location = new Point(175, 214);
             userNameTxt.Name = "userNameTxt";
             userNameTxt.PlaceholderText = "Username";
             userNameTxt.Size = new Size(296, 23);
@@ -62,7 +62,7 @@
             // 
             loginBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             loginBtn.ForeColor = Color.FromArgb(0, 46, 68);
-            loginBtn.Location = new Point(283, 292);
+            loginBtn.Location = new Point(283, 281);
             loginBtn.Name = "loginBtn";
             loginBtn.Size = new Size(75, 23);
             loginBtn.TabIndex = 3;
@@ -72,7 +72,7 @@
             // 
             // passwordTxt
             // 
-            passwordTxt.Location = new Point(175, 254);
+            passwordTxt.Location = new Point(175, 243);
             passwordTxt.Name = "passwordTxt";
             passwordTxt.PlaceholderText = "Password";
             passwordTxt.Size = new Size(296, 23);
@@ -96,7 +96,7 @@
             passResetLink.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             passResetLink.LinkBehavior = LinkBehavior.HoverUnderline;
             passResetLink.LinkColor = Color.White;
-            passResetLink.Location = new Point(288, 344);
+            passResetLink.Location = new Point(288, 333);
             passResetLink.Name = "passResetLink";
             passResetLink.Size = new Size(68, 15);
             passResetLink.TabIndex = 6;
@@ -108,7 +108,7 @@
             // 
             passResetLbl.AutoSize = true;
             passResetLbl.ForeColor = Color.White;
-            passResetLbl.Location = new Point(261, 329);
+            passResetLbl.Location = new Point(261, 318);
             passResetLbl.Name = "passResetLbl";
             passResetLbl.Size = new Size(123, 15);
             passResetLbl.TabIndex = 7;
