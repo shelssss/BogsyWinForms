@@ -64,13 +64,18 @@ namespace BogsyVideoStore
                 var selectedRow = CustomerGridView.Rows[e.RowIndex];
                 var customer = (Customer)selectedRow.DataBoundItem;
 
-              
+
                 var editForm = new AddCustomer(customer);
                 editForm.ShowDialog();
 
-               
+
                 LoadCustomer();
             }
+        }
+
+        private void nameLbl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

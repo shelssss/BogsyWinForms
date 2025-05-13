@@ -107,6 +107,7 @@
             nameLbl.Size = new Size(46, 15);
             nameLbl.TabIndex = 6;
             nameLbl.Text = "Name: ";
+            nameLbl.Click += nameLbl_Click;
             // 
             // searchBar
             // 
