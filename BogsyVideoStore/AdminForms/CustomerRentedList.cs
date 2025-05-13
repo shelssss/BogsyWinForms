@@ -1,4 +1,5 @@
 ﻿using BogsyVideoStore.Helpers;
+using BogsyVideoStore.Modals;
 using BogsyVideoStore.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace BogsyVideoStore
 {
     public partial class CustomerRentedList : Form
     {
+        
         public CustomerRentedList()
         {
             InitializeComponent();
@@ -106,6 +108,43 @@ namespace BogsyVideoStore
                 var results = FilterResults.ApplyFilters(context, searchValue, selectedStatus, selectedDate);
 
                 RentedListGrid.DataSource = results;
+            }
+        }
+
+        private void RentedListGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var selectedRow = RentedListGrid.Rows[e.RowIndex];
+                var customer = (CustomerRented)selectedRow.DataBoundItem;
+
+                using (var context = new AppDbContext())
+                {
+                    var video = context.Video.FirstOrDefault(v => v.Id.ToString() == customer.VideoId);
+
+                    if (video != null)
+                    {
+                        var rentDetails = new RentedDetails
+                        {
+                            CustomerUsername = customer.CustomerUsername,
+                            VideoRented = customer.VideoRented,
+                            Category = video.Category,
+                            MaxRentDays = video.MaxRentDays,
+                            RentedDate = customer.RentedDate,
+                            ReturnedDate = customer.ReturnedDate,
+                            RentCost = customer.RentCost,
+                            LateReturnFee = customer.LateReturnFee,
+                            Status = customer.status
+                        };
+
+                        var printDialog = new RentDetails(rentDetails);
+                        printDialog.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Video details not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
     }

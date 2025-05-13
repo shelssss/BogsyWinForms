@@ -48,6 +48,7 @@
             RentedListGrid.ReadOnly = true;
             RentedListGrid.Size = new Size(690, 433);
             RentedListGrid.TabIndex = 0;
+            RentedListGrid.CellDoubleClick += RentedListGrid_CellDoubleClick;
             // 
             // selectFilter
             // 
