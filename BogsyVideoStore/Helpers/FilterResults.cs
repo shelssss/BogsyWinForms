@@ -90,6 +90,15 @@ namespace BogsyVideoStore.Helpers
             return searchResult;
         }
 
+        public static List<Video> SearchTitle(AppDbContext context, string? searchTitle)
+        {
+            searchTitle = searchTitle?.Trim().ToLower();
+            var searchResult = context.Video
+                    .Where(v => v.Title.ToLower().Contains(searchTitle))
+                    .ToList();
+            return searchResult;
+        }
+
 
         public static String UserCount(AppDbContext context)
         {
