@@ -35,6 +35,7 @@ namespace BogsyVideoStore.Modals
             returnedLbl.Text = customer.ReturnedDate?.ToString() ?? "Not Yet Returned";
             costLbl.Text = customer.RentCost.ToString("C");
             ovedueLbl.Text = customer.LateReturnFee.ToString("C");
+            statusLbl.Text = customer.Status.ToString();
             totalLbl.Text = (customer.RentCost + customer.LateReturnFee).ToString("C");
 
         }

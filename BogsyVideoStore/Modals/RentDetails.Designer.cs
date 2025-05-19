@@ -55,6 +55,8 @@
             printReceipt = new System.Drawing.Printing.PrintDocument();
             printBtn = new Button();
             printDialog = new PrintDialog();
+            label14 = new Label();
+            statusLbl = new Label();
             SuspendLayout();
             // 
             // custInfoLlb
@@ -62,7 +64,7 @@
             custInfoLlb.AutoSize = true;
             custInfoLlb.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             custInfoLlb.ForeColor = Color.FromArgb(0, 46, 68);
-            custInfoLlb.Location = new Point(104, 28);
+            custInfoLlb.Location = new Point(108, 27);
             custInfoLlb.Name = "custInfoLlb";
             custInfoLlb.Size = new Size(192, 30);
             custInfoLlb.TabIndex = 13;
@@ -73,7 +75,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(0, 46, 68);
-            label1.Location = new Point(136, 58);
+            label1.Location = new Point(140, 57);
             label1.Name = "label1";
             label1.Size = new Size(124, 15);
             label1.TabIndex = 14;
@@ -84,7 +86,7 @@
             dateTodayLbl.AutoSize = true;
             dateTodayLbl.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dateTodayLbl.ForeColor = Color.FromArgb(0, 46, 68);
-            dateTodayLbl.Location = new Point(136, 78);
+            dateTodayLbl.Location = new Point(140, 77);
             dateTodayLbl.Name = "dateTodayLbl";
             dateTodayLbl.Size = new Size(0, 15);
             dateTodayLbl.TabIndex = 15;
@@ -182,7 +184,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label11.ForeColor = Color.FromArgb(0, 46, 68);
-            label11.Location = new Point(27, 372);
+            label11.Location = new Point(27, 397);
             label11.Name = "label11";
             label11.Size = new Size(39, 17);
             label11.TabIndex = 25;
@@ -193,7 +195,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label12.ForeColor = Color.FromArgb(0, 46, 68);
-            label12.Location = new Point(27, 346);
+            label12.Location = new Point(27, 371);
             label12.Name = "label12";
             label12.Size = new Size(352, 15);
             label12.TabIndex = 24;
@@ -292,7 +294,7 @@
             totalLbl.AutoSize = true;
             totalLbl.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             totalLbl.ForeColor = Color.FromArgb(0, 46, 68);
-            totalLbl.Location = new Point(297, 372);
+            totalLbl.Location = new Point(297, 397);
             totalLbl.Name = "totalLbl";
             totalLbl.Size = new Size(36, 17);
             totalLbl.TabIndex = 35;
@@ -326,7 +328,7 @@
             printBtn.FlatStyle = FlatStyle.Popup;
             printBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             printBtn.ForeColor = Color.White;
-            printBtn.Location = new Point(161, 412);
+            printBtn.Location = new Point(164, 445);
             printBtn.Name = "printBtn";
             printBtn.Size = new Size(75, 23);
             printBtn.TabIndex = 38;
@@ -338,11 +340,35 @@
             // 
             printDialog.UseEXDialog = true;
             // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label14.ForeColor = Color.FromArgb(0, 46, 68);
+            label14.Location = new Point(27, 354);
+            label14.Name = "label14";
+            label14.Size = new Size(46, 17);
+            label14.TabIndex = 39;
+            label14.Text = "Status";
+            // 
+            // statusLbl
+            // 
+            statusLbl.AutoSize = true;
+            statusLbl.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statusLbl.ForeColor = Color.FromArgb(0, 46, 68);
+            statusLbl.Location = new Point(297, 354);
+            statusLbl.Name = "statusLbl";
+            statusLbl.Size = new Size(42, 17);
+            statusLbl.TabIndex = 40;
+            statusLbl.Text = "status";
+            // 
             // RentDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(413, 447);
+            ClientSize = new Size(413, 492);
+            Controls.Add(statusLbl);
+            Controls.Add(label14);
             Controls.Add(printBtn);
             Controls.Add(returnedLbl);
             Controls.Add(label10);
@@ -406,5 +432,7 @@
         private System.Drawing.Printing.PrintDocument printReceipt;
         private Button printBtn;
         private PrintDialog printDialog;
+        private Label label14;
+        public Label statusLbl;
     }
 }
