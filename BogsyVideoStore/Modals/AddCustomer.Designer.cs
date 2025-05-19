@@ -44,7 +44,7 @@
             // 
             customerNameTxt.Font = new Font("Segoe UI", 12F);
             customerNameTxt.ForeColor = Color.FromArgb(0, 46, 68);
-            customerNameTxt.Location = new Point(79, 122);
+            customerNameTxt.Location = new Point(79, 137);
             customerNameTxt.Name = "customerNameTxt";
             customerNameTxt.PlaceholderText = "Customer Name";
             customerNameTxt.Size = new Size(252, 29);
@@ -54,7 +54,7 @@
             // 
             userNameTxt.Font = new Font("Segoe UI", 12F);
             userNameTxt.ForeColor = Color.FromArgb(0, 46, 68);
-            userNameTxt.Location = new Point(79, 176);
+            userNameTxt.Location = new Point(79, 191);
             userNameTxt.Name = "userNameTxt";
             userNameTxt.PlaceholderText = "Username";
             userNameTxt.Size = new Size(252, 29);
@@ -63,7 +63,7 @@
             // BdayPicker
             // 
             BdayPicker.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BdayPicker.Location = new Point(79, 286);
+            BdayPicker.Location = new Point(79, 301);
             BdayPicker.Name = "BdayPicker";
             BdayPicker.Size = new Size(252, 29);
             BdayPicker.TabIndex = 3;
@@ -73,31 +73,29 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(0, 46, 68);
-            label1.Location = new Point(79, 104);
+            label1.Location = new Point(79, 119);
             label1.Name = "label1";
             label1.Size = new Size(100, 15);
             label1.TabIndex = 4;
             label1.Text = "Customer Name:";
-          
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label2.ForeColor = Color.FromArgb(0, 46, 68);
-            label2.Location = new Point(79, 158);
+            label2.Location = new Point(79, 173);
             label2.Name = "label2";
             label2.Size = new Size(124, 15);
             label2.TabIndex = 5;
             label2.Text = "Customer Username:";
-            
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(0, 46, 68);
-            label3.Location = new Point(79, 268);
+            label3.Location = new Point(79, 283);
             label3.Name = "label3";
             label3.Size = new Size(85, 15);
             label3.TabIndex = 6;
@@ -109,9 +107,9 @@
             AddCustomerBtn.FlatStyle = FlatStyle.Popup;
             AddCustomerBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddCustomerBtn.ForeColor = Color.White;
-            AddCustomerBtn.Location = new Point(131, 342);
+            AddCustomerBtn.Location = new Point(79, 357);
             AddCustomerBtn.Name = "AddCustomerBtn";
-            AddCustomerBtn.Size = new Size(134, 37);
+            AddCustomerBtn.Size = new Size(252, 31);
             AddCustomerBtn.TabIndex = 7;
             AddCustomerBtn.Text = "Save";
             AddCustomerBtn.UseVisualStyleBackColor = false;
@@ -122,7 +120,7 @@
             passLbl.AutoSize = true;
             passLbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             passLbl.ForeColor = Color.FromArgb(0, 46, 68);
-            passLbl.Location = new Point(79, 208);
+            passLbl.Location = new Point(79, 223);
             passLbl.Name = "passLbl";
             passLbl.Size = new Size(119, 15);
             passLbl.TabIndex = 9;
@@ -132,7 +130,7 @@
             // 
             passwordTxt.Font = new Font("Segoe UI", 12F);
             passwordTxt.ForeColor = Color.FromArgb(0, 46, 68);
-            passwordTxt.Location = new Point(79, 226);
+            passwordTxt.Location = new Point(79, 241);
             passwordTxt.Name = "passwordTxt";
             passwordTxt.PlaceholderText = "Password";
             passwordTxt.Size = new Size(252, 29);
@@ -144,7 +142,7 @@
             custInfoLlb.AutoSize = true;
             custInfoLlb.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             custInfoLlb.ForeColor = Color.FromArgb(0, 46, 68);
-            custInfoLlb.Location = new Point(89, 44);
+            custInfoLlb.Location = new Point(89, 59);
             custInfoLlb.Name = "custInfoLlb";
             custInfoLlb.Size = new Size(232, 30);
             custInfoLlb.TabIndex = 10;
@@ -154,7 +152,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(409, 454);
+            ClientSize = new Size(405, 488);
             Controls.Add(custInfoLlb);
             Controls.Add(passLbl);
             Controls.Add(passwordTxt);
