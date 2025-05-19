@@ -1,4 +1,5 @@
-﻿using BogsyVideoStore.Models;
+﻿using BogsyVideoStore.Helpers;
+using BogsyVideoStore.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,28 +26,14 @@ namespace BogsyVideoStore.Modals
 
             using (var context = new AppDbContext()) 
             { 
-                var customer = context.Customer.FirstOrDefault(x => x.Username == username);
+               bool success = CustomerCrudModule.CustomerRequest(context, username, reason);
 
-                if (customer == null)
+                if (success) 
                 {
-                    MessageBox.Show("Username does not Exist");
+                    this.Close();
                 }
-                else
-                {
-                    var PassReset = new CustomerQueries
-                    {
-                        Id = Guid.NewGuid(),
-                        Username = username,
-                        Reason = reason,
-                        Status = "Pending"
-                    };
-                   context.CustomerQueries.Add(PassReset);  
-                }
-                context.SaveChanges();
-                //add message dialog
-
             }
-            this.Close();
+            
         }
     }
 }

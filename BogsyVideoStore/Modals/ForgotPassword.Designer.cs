@@ -41,7 +41,7 @@
             passRestLbl.AutoSize = true;
             passRestLbl.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             passRestLbl.ForeColor = Color.FromArgb(0, 46, 68);
-            passRestLbl.Location = new Point(28, 35);
+            passRestLbl.Location = new Point(43, 26);
             passRestLbl.Name = "passRestLbl";
             passRestLbl.Size = new Size(237, 30);
             passRestLbl.TabIndex = 13;
@@ -95,9 +95,9 @@
             RequestBtn.FlatStyle = FlatStyle.Popup;
             RequestBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             RequestBtn.ForeColor = Color.White;
-            RequestBtn.Location = new Point(96, 224);
+            RequestBtn.Location = new Point(28, 224);
             RequestBtn.Name = "RequestBtn";
-            RequestBtn.Size = new Size(105, 37);
+            RequestBtn.Size = new Size(252, 30);
             RequestBtn.TabIndex = 19;
             RequestBtn.Text = "Request";
             RequestBtn.UseVisualStyleBackColor = false;
@@ -107,7 +107,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(319, 390);
+            ClientSize = new Size(319, 382);
             Controls.Add(RequestBtn);
             Controls.Add(label1);
             Controls.Add(reasonTxt);
