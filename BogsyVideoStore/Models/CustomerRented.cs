@@ -9,6 +9,7 @@ namespace BogsyVideoStore.Models
     public class CustomerRented
     {
         public Guid Id { get; set; }
+        public Guid customerId { get; set; }
         public string CustomerUsername { get; set; }
         public string VideoId { get; set; } 
         public string VideoRented { get; set; }
