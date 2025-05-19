@@ -48,6 +48,9 @@
             panel5 = new Panel();
             totalSalesLbl = new Label();
             saleLbl = new Label();
+            panel6 = new Panel();
+            transactionLbl = new Label();
+            label2 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -57,6 +60,7 @@
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel5.SuspendLayout();
+            panel6.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -268,12 +272,46 @@
             saleLbl.TabIndex = 0;
             saleLbl.Text = "Total Sales";
             // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(0, 46, 68);
+            panel6.Controls.Add(transactionLbl);
+            panel6.Controls.Add(label2);
+            panel6.Location = new Point(548, 187);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(224, 128);
+            panel6.TabIndex = 6;
+            // 
+            // transactionLbl
+            // 
+            transactionLbl.AutoSize = true;
+            transactionLbl.BackColor = Color.FromArgb(0, 46, 68);
+            transactionLbl.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            transactionLbl.ForeColor = SystemColors.ControlLightLight;
+            transactionLbl.Location = new Point(75, 50);
+            transactionLbl.Name = "transactionLbl";
+            transactionLbl.Size = new Size(0, 37);
+            transactionLbl.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(0, 46, 68);
+            label2.Font = new Font("Segoe UI Light", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ControlLightLight;
+            label2.Location = new Point(0, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(167, 28);
+            label2.TabIndex = 0;
+            label2.Text = "Transactions Made";
+            // 
             // dashForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(836, 551);
+            Controls.Add(panel6);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(panel3);
@@ -296,6 +334,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -320,5 +360,8 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
+        private Panel panel6;
+        private Label transactionLbl;
+        private Label label2;
     }
 }

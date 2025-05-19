@@ -38,6 +38,9 @@ namespace BogsyVideoStore
 
                 var totalSales = FilterResults.TotalSales(context);
                 totalSalesLbl.Text = totalSales;
+
+                var totalTransaction = FilterResults.TotalTransactions(context);
+                transactionLbl.Text = totalTransaction;
             }
         }
 

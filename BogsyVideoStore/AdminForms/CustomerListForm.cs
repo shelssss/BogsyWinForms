@@ -42,6 +42,7 @@ namespace BogsyVideoStore
             {
                 var customers = context.Customer.ToList();
                 CustomerGridView.DataSource = customers;
+                DisplayHelper.DisplayDefaults(CustomerGridView);
             }
         }
 
@@ -54,6 +55,7 @@ namespace BogsyVideoStore
                 var filtered = FilterResults.SearchCustomer(context, searchValue);
 
                 CustomerGridView.DataSource = filtered;
+                DisplayHelper.DisplayDefaults(CustomerGridView);
             }
         }
 

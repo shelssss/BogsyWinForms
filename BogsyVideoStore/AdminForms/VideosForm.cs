@@ -39,6 +39,7 @@ namespace BogsyVideoStore
             {
                 var videos = context.Video.OrderBy(v => v.Title).ToList();
                 VideoGridView.DataSource = videos;
+                DisplayHelper.DisplayDefaults(VideoGridView);
             }
         }
 
@@ -64,7 +65,7 @@ namespace BogsyVideoStore
 
                 using (var context = new AppDbContext())
                 {
-                    bool deleted = VideoCrud.DeleteVideo(context, video.Id);
+                    bool deleted = VideoCrudModule.DeleteVideo(context, video.Id);
                     if (deleted)
                     {
                         LoadVideo();
@@ -73,7 +74,7 @@ namespace BogsyVideoStore
             }
             else
             {
-                MessageBox.Show("Please select a video to delete.");
+                MessageBox.Show(StringHelpers.videoToDelete);
             }
         }
 
@@ -85,6 +86,7 @@ namespace BogsyVideoStore
                 var searchTitle = FilterResults.SearchTitle(context, search);
 
                 VideoGridView.DataSource = searchTitle;
+                DisplayHelper.DisplayDefaults(VideoGridView);
             }
         }
     }

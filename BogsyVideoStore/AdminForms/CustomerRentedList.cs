@@ -29,12 +29,13 @@ namespace BogsyVideoStore
                 var allRents = context.CustomerRented.ToList();
 
 
-                Overdue.UpdateOverdue(allRents);
+                OverdueModule.UpdateOverdue(allRents);
 
                 context.CustomerRented.UpdateRange(allRents);
                 context.SaveChanges();
 
                 RentedListGrid.DataSource = allRents;
+                DisplayHelper.DisplayDefaults(RentedListGrid);
             }
         }
 
@@ -50,6 +51,7 @@ namespace BogsyVideoStore
                 {
                     var RentedVid = FilterResults.ShowRented(context);
                     RentedListGrid.DataSource = RentedVid;
+                    DisplayHelper.DisplayDefaults(RentedListGrid);
 
                 }
             }
@@ -59,6 +61,7 @@ namespace BogsyVideoStore
                 {
                     var OverdueVid = FilterResults.ShowOverdue(context);
                     RentedListGrid.DataSource = OverdueVid;
+                    DisplayHelper.DisplayDefaults(RentedListGrid);
 
                 }
             }
@@ -68,6 +71,7 @@ namespace BogsyVideoStore
                 {
                     var ReturnedVid = FilterResults.ShowReturned(context);
                     RentedListGrid.DataSource = ReturnedVid;
+                    DisplayHelper.DisplayDefaults(RentedListGrid);
 
                 }
             }
@@ -81,6 +85,7 @@ namespace BogsyVideoStore
                 var filtered = FilterResults.SearchName(context, searchValue);
 
                 RentedListGrid.DataSource = filtered;
+                DisplayHelper.DisplayDefaults(RentedListGrid);
             }
         }
 
@@ -93,6 +98,7 @@ namespace BogsyVideoStore
                 var dateFilter = FilterResults.DateFilter(context, selectedDate);
 
                 RentedListGrid.DataSource = dateFilter;
+                DisplayHelper.DisplayDefaults(RentedListGrid);
 
             }
         }
@@ -108,6 +114,7 @@ namespace BogsyVideoStore
                 var results = FilterResults.ApplyFilters(context, searchValue, selectedStatus, selectedDate);
 
                 RentedListGrid.DataSource = results;
+                DisplayHelper.DisplayDefaults(RentedListGrid);
             }
         }
 
@@ -142,7 +149,7 @@ namespace BogsyVideoStore
                     }
                     else
                     {
-                        MessageBox.Show("Video details not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(StringHelpers.videoNotFound, StringHelpers.captionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
