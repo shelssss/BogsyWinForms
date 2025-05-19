@@ -45,21 +45,21 @@ namespace BogsyVideoStore.Helpers
             var ReturnedVid = context.CustomerRented.Where(r => r.status == "Returned").ToList();
             return ReturnedVid;
         }
-        public static List<CustomerRented> ShowRentCustomer(AppDbContext context, string currentCustomerName)
+        public static List<CustomerRented> ShowRentCustomer(AppDbContext context, Guid customerId)
         {
-            var CustomerRentedVid = context.CustomerRented.Where(r => r.CustomerUsername == currentCustomerName && r.status == "Rented" && r.ReturnedDate == null).ToList();
+            var CustomerRentedVid = context.CustomerRented.Where(r => r.customerId == customerId && r.status == "Rented" && r.ReturnedDate == null).ToList();
             return CustomerRentedVid;
         }
 
-        public static List<CustomerRented> ShowOverCustomer(AppDbContext context, string currentCustomerName)
+        public static List<CustomerRented> ShowOverCustomer(AppDbContext context, Guid customerId)
         {
-            var CustomerOverdueVid = context.CustomerRented.Where(r => r.CustomerUsername == currentCustomerName && r.status == "Overdue" && r.ReturnedDate == null).ToList();
+            var CustomerOverdueVid = context.CustomerRented.Where(r => r.customerId == customerId && r.status == "Overdue" && r.ReturnedDate == null).ToList();
             return CustomerOverdueVid;
         }
 
-        public static List<CustomerRented> ShowReturnCustomer(AppDbContext context, string currentCustomerName)
+        public static List<CustomerRented> ShowReturnCustomer(AppDbContext context, Guid customerId)
         {
-            var CustomerReturnedVid = context.CustomerRented.Where(r => r.CustomerUsername == currentCustomerName && r.status == "Returned").ToList();
+            var CustomerReturnedVid = context.CustomerRented.Where(r => r.customerId == customerId && r.status == "Returned").ToList();
             return CustomerReturnedVid;
         }
 
@@ -78,6 +78,14 @@ namespace BogsyVideoStore.Helpers
             var searchResult = context.Customer
                     .Where(c => c.Name.ToLower().Contains(searchName))
                     .ToList();
+            return searchResult;
+        }
+
+        public static List<CustomerQueries>SearchCustomerQuery(AppDbContext context, string? username)
+        {
+            username = username?.Trim().ToLower();
+            var searchResult = context.CustomerQueries.Where(c => c.Username.ToLower().Contains(username))
+                .ToList();
             return searchResult;
         }
 
@@ -129,6 +137,12 @@ namespace BogsyVideoStore.Helpers
         {
             var totalSales = context.CustomerRented.Sum(r => r.RentCost + r.LateReturnFee);
             return totalSales.ToString("C");
+        }
+        
+        public static string TotalTransactions (AppDbContext context)
+        {
+            var totalTransactions = context.CustomerRented.Count();
+            return totalTransactions.ToString();
         }
 
 

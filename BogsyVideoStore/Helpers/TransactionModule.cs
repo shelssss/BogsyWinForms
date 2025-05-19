@@ -9,7 +9,7 @@ namespace BogsyVideoStore.Helpers
 {
     public class TransactionVideo
     {
-        public static void RentAVideo(Video video, string customerUsername)
+        public static void RentAVideo(Video video, Guid customerId, string customerUsername)
         {
 
             int cost = video.Category == "DVD" ? 50 : 25;
@@ -41,6 +41,7 @@ namespace BogsyVideoStore.Helpers
                         var rental = new CustomerRented
                         {
                             Id = Guid.NewGuid(),
+                            customerId = customerId,    
                             CustomerUsername = customerUsername,
                             VideoRented = v.Title,
                             RentedDate = DateOnly.FromDateTime(DateTime.Today),

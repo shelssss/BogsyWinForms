@@ -8,7 +8,7 @@ using BogsyVideoStore.Models;
 
 namespace BogsyVideoStore.Helpers
 {
-    public class Crud
+    public class CustomerCrudModule
     {
        
 
@@ -47,11 +47,14 @@ namespace BogsyVideoStore.Helpers
         public static bool EditCustomer(AppDbContext context, Customer customerToEdit, string name, string username, DateOnly birthday)
         {
             var customer = context.Customer.FirstOrDefault(c => c.Id == customerToEdit.Id);
-            bool usernameExists = context.Customer.Any(c => c.Username == username);
-            if (usernameExists)
+            if (customer.Username != username) 
             {
-                MessageBox.Show("Username already exists. Please choose another one.", "Duplicate Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                bool usernameExists = context.Customer.Any(c => c.Username == username);
+                if (usernameExists)
+                {
+                    MessageBox.Show("Username already exists. Please choose another one.", "Duplicate Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
             }
             if (customer != null)
             {
@@ -60,6 +63,46 @@ namespace BogsyVideoStore.Helpers
                 customer.Birthday = birthday;
                 context.SaveChanges();
                 MessageBox.Show("Customer updated!");
+                return true;
+            }
+
+            MessageBox.Show("Customer not found.");
+            return false;
+        }
+
+        public static bool CustomerRequest(AppDbContext context, string username, string reason)
+        {
+            var customer = context.Customer.FirstOrDefault(x => x.Username == username);
+
+            if (customer == null)
+            {
+                MessageBox.Show("Username does not Exist");
+                return false;
+            }
+            var PassReset = new CustomerQueries
+            {
+                Id = Guid.NewGuid(),
+                Username = username,
+                Reason = reason,
+                Status = "Pending"
+            };
+            context.CustomerQueries.Add(PassReset);
+            context.SaveChanges();
+            MessageBox.Show("Request sent!");
+            return true;
+
+        }
+
+        public static bool ChangePassword(AppDbContext context, Customer customerToEdit, string username, string password)
+        {
+            var customer = context.Customer.FirstOrDefault(c => c.Username == customerToEdit.Username);
+            var changeStatus = context.CustomerQueries.FirstOrDefault(c => c.Username == customerToEdit.Username);
+            if (customer != null && changeStatus != null)
+            {
+                customer.Password = PassHash.HashPassword(password);
+                changeStatus.Status = "Updated";
+                context.SaveChanges();
+                MessageBox.Show("Password updated!");
                 return true;
             }
 

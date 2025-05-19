@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BogsyVideoStore.Helpers
 {
-    public static class Overdue
+    public static class OverdueModule
     {
 
         public static void UpdateOverdue(List<CustomerRented> rentals)
