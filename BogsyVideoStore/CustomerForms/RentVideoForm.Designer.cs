@@ -47,6 +47,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(videoFlowPanel);
             FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
             Name = "RentVideoForm";
             Text = "RentVideoForm";
             ResumeLayout(false);

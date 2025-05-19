@@ -15,18 +15,19 @@ namespace BogsyVideoStore
 {
     public partial class RentVideoForm : Form
     {
-        private string currentCustomerUsername;
+        private Guid currentCustomerId;
+        private string currentUsername;
         private RentedVideo RentedList;
 
-        public RentVideoForm(string customerUsername)
+        public RentVideoForm(Guid Id, string CustomerUsername)
         {
             InitializeComponent();
-            currentCustomerUsername = customerUsername;
+            currentCustomerId = Id;
             LoadVideos();
-
+            currentUsername = CustomerUsername;
         }
-       
-       
+
+
         private void LoadVideos()
         {
             videoFlowPanel.Controls.Clear();
@@ -123,7 +124,7 @@ namespace BogsyVideoStore
                    
                     rentBtn.Click += (s, e) =>
                     {
-                        TransactionVideo.RentAVideo(video, currentCustomerUsername);
+                        TransactionVideo.RentAVideo(video, currentCustomerId, currentUsername);
                         LoadVideos();
                     };
                     card.Controls.Add(pictureBox);

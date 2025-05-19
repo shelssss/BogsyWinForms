@@ -16,10 +16,12 @@ namespace BogsyVideoStore
     public partial class RentedVidForm : Form
     {
         private string currentCustomerName;
-        public RentedVidForm(string currentCustomer)
+        private Guid currentCustomerId;
+        public RentedVidForm(Guid currentId, string currentCustomer)
         {
             InitializeComponent();
             currentCustomerName = currentCustomer;
+            currentCustomerId = currentId;  
             LoadRentedVideo();
         }
 
@@ -28,16 +30,17 @@ namespace BogsyVideoStore
             using (var context = new AppDbContext())
             {
                 var rentedVideos = context.CustomerRented
-                    .Where(r => r.CustomerUsername == currentCustomerName && r.ReturnedDate == null)
+                    .Where(r => r.customerId == currentCustomerId && r.ReturnedDate == null)
                     .ToList();
 
 
-                Overdue.UpdateOverdue(rentedVideos);
+                OverdueModule.UpdateOverdue(rentedVideos);
 
                 context.CustomerRented.UpdateRange(rentedVideos);
                 context.SaveChanges();
 
                 RentedVidGrid.DataSource = rentedVideos;
+                DisplayHelper.DisplayDefaults(RentedVidGrid);
             }
         }
 
@@ -77,7 +80,7 @@ namespace BogsyVideoStore
                             }
                             else
                             {
-                                MessageBox.Show("Related video details not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(StringHelpers.videoNotFound, StringHelpers.captionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -85,7 +88,7 @@ namespace BogsyVideoStore
             }
             else
             {
-                MessageBox.Show("Please select a video to return.");
+                MessageBox.Show(StringHelpers.selectReturnVid);
             }
                 
             
@@ -98,8 +101,9 @@ namespace BogsyVideoStore
             {
                 using (var context = new AppDbContext())
                 {
-                    var RentedVid = FilterResults.ShowRentCustomer(context, currentCustomerName);
+                    var RentedVid = FilterResults.ShowRentCustomer(context, currentCustomerId);
                     RentedVidGrid.DataSource = RentedVid;
+                    DisplayHelper.DisplayDefaults(RentedVidGrid);
 
                 }
             }
@@ -107,8 +111,9 @@ namespace BogsyVideoStore
             {
                 using (var context = new AppDbContext())
                 {
-                    var OverdueVid = FilterResults.ShowOverCustomer(context, currentCustomerName);  
+                    var OverdueVid = FilterResults.ShowOverCustomer(context, currentCustomerId);  
                     RentedVidGrid.DataSource = OverdueVid;
+                    DisplayHelper.DisplayDefaults(RentedVidGrid);
 
                 }
             }
@@ -116,8 +121,9 @@ namespace BogsyVideoStore
             {
                 using (var context = new AppDbContext())
                 {
-                    var ReturnedVid = FilterResults.ShowReturnCustomer(context, currentCustomerName);
+                    var ReturnedVid = FilterResults.ShowReturnCustomer(context, currentCustomerId);
                     RentedVidGrid.DataSource = ReturnedVid;
+                    DisplayHelper.DisplayDefaults(RentedVidGrid);
 
                 }
             }
