@@ -41,6 +41,8 @@
             videoBtn = new Button();
             panel5 = new Panel();
             AllRentsBtn = new Button();
+            panel8 = new Panel();
+            ResetPassReq = new Button();
             panel7 = new Panel();
             panel6 = new Panel();
             logoutBtn = new Button();
@@ -51,6 +53,7 @@
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
+            panel8.SuspendLayout();
             panel6.SuspendLayout();
             SuspendLayout();
             // 
@@ -94,6 +97,7 @@
             flowLayoutPanel1.Controls.Add(panel3);
             flowLayoutPanel1.Controls.Add(panel4);
             flowLayoutPanel1.Controls.Add(panel5);
+            flowLayoutPanel1.Controls.Add(panel8);
             flowLayoutPanel1.Controls.Add(panel7);
             flowLayoutPanel1.Controls.Add(panel6);
             flowLayoutPanel1.Dock = DockStyle.Left;
@@ -190,7 +194,7 @@
             AllRentsBtn.ForeColor = Color.White;
             AllRentsBtn.Image = (Image)resources.GetObject("AllRentsBtn.Image");
             AllRentsBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            AllRentsBtn.Location = new Point(-13, -34);
+            AllRentsBtn.Location = new Point(-13, -30);
             AllRentsBtn.Name = "AllRentsBtn";
             AllRentsBtn.Padding = new Padding(25, 0, 0, 0);
             AllRentsBtn.Size = new Size(239, 115);
@@ -199,17 +203,41 @@
             AllRentsBtn.UseVisualStyleBackColor = false;
             AllRentsBtn.Click += AllRentsBtn_Click;
             // 
+            // panel8
+            // 
+            panel8.Controls.Add(ResetPassReq);
+            panel8.Location = new Point(3, 285);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(195, 57);
+            panel8.TabIndex = 7;
+            // 
+            // ResetPassReq
+            // 
+            ResetPassReq.BackColor = Color.FromArgb(0, 46, 68);
+            ResetPassReq.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            ResetPassReq.ForeColor = Color.White;
+            ResetPassReq.Image = (Image)resources.GetObject("ResetPassReq.Image");
+            ResetPassReq.ImageAlign = ContentAlignment.MiddleLeft;
+            ResetPassReq.Location = new Point(-18, -28);
+            ResetPassReq.Name = "ResetPassReq";
+            ResetPassReq.Padding = new Padding(25, 0, 0, 0);
+            ResetPassReq.Size = new Size(239, 115);
+            ResetPassReq.TabIndex = 8;
+            ResetPassReq.Text = "Reset Password";
+            ResetPassReq.UseVisualStyleBackColor = false;
+            ResetPassReq.Click += ResetPassReq_Click;
+            // 
             // panel7
             // 
-            panel7.Location = new Point(3, 285);
+            panel7.Location = new Point(3, 348);
             panel7.Name = "panel7";
-            panel7.Size = new Size(195, 186);
+            panel7.Size = new Size(195, 110);
             panel7.TabIndex = 8;
             // 
             // panel6
             // 
             panel6.Controls.Add(logoutBtn);
-            panel6.Location = new Point(3, 477);
+            panel6.Location = new Point(3, 464);
             panel6.Name = "panel6";
             panel6.Size = new Size(195, 57);
             panel6.TabIndex = 7;
@@ -221,7 +249,7 @@
             logoutBtn.ForeColor = Color.White;
             logoutBtn.Image = (Image)resources.GetObject("logoutBtn.Image");
             logoutBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            logoutBtn.Location = new Point(-12, -36);
+            logoutBtn.Location = new Point(-14, -29);
             logoutBtn.Name = "logoutBtn";
             logoutBtn.Padding = new Padding(25, 0, 0, 0);
             logoutBtn.Size = new Size(239, 115);
@@ -253,6 +281,7 @@
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            panel8.ResumeLayout(false);
             panel6.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -274,5 +303,7 @@
         private Panel panel7;
         private Panel panel6;
         private Button logoutBtn;
+        private Panel panel8;
+        private Button ResetPassReq;
     }
 }

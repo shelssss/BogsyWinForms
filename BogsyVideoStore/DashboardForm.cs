@@ -1,4 +1,5 @@
-﻿using BogsyVideoStore.Helpers;
+﻿using BogsyVideoStore.AdminForms;
+using BogsyVideoStore.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace BogsyVideoStore
         private VideosForm vidForm;
         private dashForm dashForm;
         private CustomerRentedList AllRentsForm;
+        private ForgotListForm ForgotListForm;
         CloseChildrenMDI CloseChildrenMDI = new CloseChildrenMDI();
         public DashboardForm()
         {
@@ -43,7 +45,7 @@ namespace BogsyVideoStore
                 dashForm.Activate();
             }
         }
-       
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -137,17 +139,41 @@ namespace BogsyVideoStore
             AllRentsForm = null;
         }
 
+        private void ResetPassReq_Click(object sender, EventArgs e)
+        {
+            CloseChildrenMDI.CloseAllChildForms();
+            if (ForgotListForm == null)
+            {
+                ForgotListForm = new ForgotListForm();
+                ForgotListForm.FormClosed += ForgotListForm_FormClose;
+                ForgotListForm.MdiParent = this;
+                ForgotListForm.Dock = DockStyle.Fill;
+                ForgotListForm.Show();
+            }
+            else
+            {
+                ForgotListForm.Activate();
+            }
+        }
+
+        private void ForgotListForm_FormClose(object sender, FormClosedEventArgs e)
+        {
+            ForgotListForm = null;
+        }
+
         private void logoutBtn_Click(object sender, EventArgs e)
         {
-            var confirm = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show(StringHelpers.logoutConfirmation, StringHelpers.logoutCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirm == DialogResult.Yes)
             {
-            
+
                 Form1 loginForm = new Form1();
                 loginForm.Show();
                 this.Close();
             }
         }
+
+       
     }
 }
