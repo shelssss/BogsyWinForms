@@ -18,7 +18,7 @@ namespace BogsyVideoStore
             var password = passwordTxt.Text.Trim();
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Please enter both username and password.");
+                MessageBox.Show(StringHelpers.emptyLoginFields);
                 return;
             }
 
@@ -28,7 +28,7 @@ namespace BogsyVideoStore
 
                 if (user != null && PassHash.VerifyPassword(password, user.Password))
                 {
-                    if (user.Role == "Admin")
+                    if (user.Role == StringHelpers.adminRole)
                     {
                         var adminForm = new DashboardForm();
                         adminForm.Show();
@@ -43,7 +43,7 @@ namespace BogsyVideoStore
                 else
                 {
 
-                    MessageBox.Show("Invalid username or password.");
+                    MessageBox.Show(StringHelpers.invalidCrendetials);
                 }
             }
         }
