@@ -38,8 +38,6 @@ namespace BogsyVideoStore
             string username = userNameTxt.Text.Trim();
             string password = passwordTxt.Text.Trim();
             DateOnly birthday = DateOnly.FromDateTime(BdayPicker.Value);
-
-
             using (var context = new AppDbContext())
             {   
                 
@@ -48,7 +46,7 @@ namespace BogsyVideoStore
                 {
                     if (_customerToEdit != null)
                     {
-                        bool UpdateSuccess = Crud.EditCustomer(context, _customerToEdit, name, username, birthday);
+                        bool UpdateSuccess = CustomerCrudModule.EditCustomer(context, _customerToEdit, name, username, birthday);
                         if (UpdateSuccess)
                         {
                             this.Close();
@@ -58,7 +56,7 @@ namespace BogsyVideoStore
                 }
                 else
                 {
-                    bool InsertSuccess = Crud.AddCustomer(context, name, username, password, birthday);
+                    bool InsertSuccess = CustomerCrudModule.AddCustomer(context, name, username, password, birthday);
 
                     if (InsertSuccess)
                     {

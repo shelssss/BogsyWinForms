@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BogsyVideoStore.Helpers;
 using BogsyVideoStore.Models;
 
 
@@ -48,7 +49,7 @@ namespace BogsyVideoStore
 
             if (!IsVideoInputValid())
             {
-                MessageBox.Show("Please fill in all fields properly.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(StringHelpers.supplyAllFields, StringHelpers.validationCaption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             using (var context = new AppDbContext())
@@ -58,7 +59,7 @@ namespace BogsyVideoStore
                 {
                     if (_videoToEdit != null)
                     {
-                        bool sucessEdit = VideoCrud.EditVideo(context, _videoToEdit, videoTitle, description, category,
+                        bool sucessEdit = VideoCrudModule.EditVideo(context, _videoToEdit, videoTitle, description, category,
                             intCount, maxRentDays, imgPath);
                         if (sucessEdit)
                         {
@@ -69,7 +70,7 @@ namespace BogsyVideoStore
                 }
                 else
                 {
-                    bool successInsert = VideoCrud.AddVideo(context, videoTitle, description, category, intCount,
+                    bool successInsert = VideoCrudModule.AddVideo(context, videoTitle, description, category, intCount,
                         maxRentDays, imgPath);
 
                     if (successInsert)
